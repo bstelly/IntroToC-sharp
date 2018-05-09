@@ -1,0 +1,10 @@
+c:\users\s178022\documents\visual studio 2015\Projects\IntroToC-sharp\DialogueTool\bin\Debug\DialogueTool.exe.config
+c:\users\s178022\documents\visual studio 2015\Projects\IntroToC-sharp\DialogueTool\bin\Debug\DialogueTool.exe
+c:\users\s178022\documents\visual studio 2015\Projects\IntroToC-sharp\DialogueTool\bin\Debug\DialogueTool.pdb
+c:\users\s178022\documents\visual studio 2015\Projects\IntroToC-sharp\DialogueTool\obj\Debug\DialogueTool.csprojResolveAssemblyReference.cache
+c:\users\s178022\documents\visual studio 2015\Projects\IntroToC-sharp\DialogueTool\obj\Debug\DialogueTool.Properties.Resources.resources
+c:\users\s178022\documents\visual studio 2015\Projects\IntroToC-sharp\DialogueTool\obj\Debug\DialogueTool.csproj.GenerateResource.Cache
+c:\users\s178022\documents\visual studio 2015\Projects\IntroToC-sharp\DialogueTool\obj\Debug\DialogueTool.exe
+c:\users\s178022\documents\visual studio 2015\Projects\IntroToC-sharp\DialogueTool\obj\Debug\DialogueTool.pdb
+c:\users\s178022\documents\visual studio 2015\Projects\IntroToC-sharp\DialogueTool\obj\Debug\DialogueTool.FormMain.resources
+c:\users\s178022\documents\visual studio 2015\Projects\IntroToC-sharp\DialogueTool\obj\Debug\DialogueTool.FormViewer.resources
