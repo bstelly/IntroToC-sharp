@@ -8,3 +8,14 @@ c:\users\s178022\documents\visual studio 2015\Projects\IntroToC-sharp\DialogueTo
 c:\users\s178022\documents\visual studio 2015\Projects\IntroToC-sharp\DialogueTool\obj\Debug\DialogueTool.pdb
 c:\users\s178022\documents\visual studio 2015\Projects\IntroToC-sharp\DialogueTool\obj\Debug\DialogueTool.FormMain.resources
 c:\users\s178022\documents\visual studio 2015\Projects\IntroToC-sharp\DialogueTool\obj\Debug\DialogueTool.FormViewer.resources
+C:\Users\bstel\Documents\GitHub\IntroToC-sharp\DialogueTool\bin\Debug\DialogueTool.exe.config
+C:\Users\bstel\Documents\GitHub\IntroToC-sharp\DialogueTool\bin\Debug\DialogueTool.exe
+C:\Users\bstel\Documents\GitHub\IntroToC-sharp\DialogueTool\bin\Debug\DialogueTool.pdb
+C:\Users\bstel\Documents\GitHub\IntroToC-sharp\DialogueTool\obj\Debug\DialogueTool.csprojResolveAssemblyReference.cache
+C:\Users\bstel\Documents\GitHub\IntroToC-sharp\DialogueTool\obj\Debug\DialogueTool.FormMain.resources
+C:\Users\bstel\Documents\GitHub\IntroToC-sharp\DialogueTool\obj\Debug\DialogueTool.FormViewer.resources
+C:\Users\bstel\Documents\GitHub\IntroToC-sharp\DialogueTool\obj\Debug\DialogueTool.Properties.Resources.resources
+C:\Users\bstel\Documents\GitHub\IntroToC-sharp\DialogueTool\obj\Debug\DialogueTool.csproj.GenerateResource.Cache
+C:\Users\bstel\Documents\GitHub\IntroToC-sharp\DialogueTool\obj\Debug\DialogueTool.csproj.CoreCompileInputs.cache
+C:\Users\bstel\Documents\GitHub\IntroToC-sharp\DialogueTool\obj\Debug\DialogueTool.exe
+C:\Users\bstel\Documents\GitHub\IntroToC-sharp\DialogueTool\obj\Debug\DialogueTool.pdb

@@ -39,7 +39,7 @@
             // buttonEditor
             // 
             this.buttonEditor.Font = new System.Drawing.Font("Tahoma", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonEditor.Location = new System.Drawing.Point(13, 121);
+            this.buttonEditor.Location = new System.Drawing.Point(22, 121);
             this.buttonEditor.Name = "buttonEditor";
             this.buttonEditor.Size = new System.Drawing.Size(160, 90);
             this.buttonEditor.TabIndex = 0;
@@ -49,7 +49,7 @@
             // buttonViewer
             // 
             this.buttonViewer.Font = new System.Drawing.Font("Tahoma", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonViewer.Location = new System.Drawing.Point(194, 121);
+            this.buttonViewer.Location = new System.Drawing.Point(202, 121);
             this.buttonViewer.Name = "buttonViewer";
             this.buttonViewer.Size = new System.Drawing.Size(160, 90);
             this.buttonViewer.TabIndex = 1;
@@ -64,7 +64,7 @@
             // 
             // buttonBrowse
             // 
-            this.buttonBrowse.Location = new System.Drawing.Point(13, 40);
+            this.buttonBrowse.Location = new System.Drawing.Point(310, 47);
             this.buttonBrowse.Name = "buttonBrowse";
             this.buttonBrowse.Size = new System.Drawing.Size(62, 23);
             this.buttonBrowse.TabIndex = 2;
@@ -76,7 +76,7 @@
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(80, 69);
+            this.textBox1.Location = new System.Drawing.Point(12, 74);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(274, 13);
@@ -85,16 +85,16 @@
             // 
             // displayFileDir
             // 
-            this.displayFileDir.Location = new System.Drawing.Point(81, 43);
+            this.displayFileDir.Location = new System.Drawing.Point(12, 49);
             this.displayFileDir.Name = "displayFileDir";
-            this.displayFileDir.Size = new System.Drawing.Size(274, 20);
+            this.displayFileDir.Size = new System.Drawing.Size(292, 20);
             this.displayFileDir.TabIndex = 5;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(367, 229);
+            this.ClientSize = new System.Drawing.Size(384, 229);
             this.Controls.Add(this.displayFileDir);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.buttonBrowse);
@@ -102,6 +102,7 @@
             this.Controls.Add(this.buttonEditor);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Dialogue Tool";
             this.ResumeLayout(false);
             this.PerformLayout();
 
