@@ -37,7 +37,7 @@ namespace DialogueTool
         {
             if (fileDir != "")
             {
-                viewerForm = new FormViewer(fileDir);
+                viewerForm = new FormViewer(this, fileDir);
                 viewerForm.Show();
                 Hide();
             }

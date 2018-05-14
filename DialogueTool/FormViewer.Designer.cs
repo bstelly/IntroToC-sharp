@@ -39,7 +39,7 @@
             this.Participants = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ConversationSummary = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.display = new System.Windows.Forms.TextBox();
-            this.buttonNext = new System.Windows.Forms.Button();
+            this.buttonNextLine = new System.Windows.Forms.Button();
             this.buttonPrevConv = new System.Windows.Forms.Button();
             this.buttonNextConv = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
@@ -49,6 +49,9 @@
             // 
             this.grid.AllowUserToAddRows = false;
             this.grid.AllowUserToDeleteRows = false;
+            this.grid.AllowUserToResizeColumns = false;
+            this.grid.AllowUserToResizeRows = false;
+            this.grid.BackgroundColor = System.Drawing.Color.White;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ConversationID,
@@ -64,6 +67,8 @@
             this.grid.Name = "grid";
             this.grid.Size = new System.Drawing.Size(1240, 343);
             this.grid.TabIndex = 0;
+            this.grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellClick);
+            this.grid.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grid_RowHeaderMouseClick);
             // 
             // ConversationID
             // 
@@ -100,7 +105,7 @@
             this.Line.HeaderText = "Line";
             this.Line.Name = "Line";
             this.Line.ReadOnly = true;
-            this.Line.Width = 247;
+            this.Line.Width = 240;
             // 
             // SpecialityAnimation
             // 
@@ -129,42 +134,48 @@
             this.ConversationSummary.HeaderText = "Conversation Summary";
             this.ConversationSummary.Name = "ConversationSummary";
             this.ConversationSummary.ReadOnly = true;
-            this.ConversationSummary.Width = 250;
+            this.ConversationSummary.Width = 240;
             // 
             // display
             // 
-            this.display.Location = new System.Drawing.Point(101, 379);
+            this.display.BackColor = System.Drawing.Color.White;
+            this.display.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.display.Location = new System.Drawing.Point(101, 373);
             this.display.Multiline = true;
             this.display.Name = "display";
-            this.display.Size = new System.Drawing.Size(1058, 96);
+            this.display.ReadOnly = true;
+            this.display.Size = new System.Drawing.Size(1058, 105);
             this.display.TabIndex = 1;
             // 
-            // buttonNext
+            // buttonNextLine
             // 
-            this.buttonNext.Location = new System.Drawing.Point(911, 598);
-            this.buttonNext.Name = "buttonNext";
-            this.buttonNext.Size = new System.Drawing.Size(150, 90);
-            this.buttonNext.TabIndex = 2;
-            this.buttonNext.Text = "Next Dialogue";
-            this.buttonNext.UseVisualStyleBackColor = true;
+            this.buttonNextLine.Location = new System.Drawing.Point(559, 484);
+            this.buttonNextLine.Name = "buttonNextLine";
+            this.buttonNextLine.Size = new System.Drawing.Size(150, 90);
+            this.buttonNextLine.TabIndex = 5;
+            this.buttonNextLine.Text = "Next Dialogue Line\r\n";
+            this.buttonNextLine.UseVisualStyleBackColor = true;
+            this.buttonNextLine.Click += new System.EventHandler(this.buttonNextLine_Click);
             // 
             // buttonPrevConv
             // 
-            this.buttonPrevConv.Location = new System.Drawing.Point(704, 580);
+            this.buttonPrevConv.Location = new System.Drawing.Point(481, 580);
             this.buttonPrevConv.Name = "buttonPrevConv";
             this.buttonPrevConv.Size = new System.Drawing.Size(150, 90);
-            this.buttonPrevConv.TabIndex = 3;
+            this.buttonPrevConv.TabIndex = 6;
             this.buttonPrevConv.Text = "Previous Conversation";
             this.buttonPrevConv.UseVisualStyleBackColor = true;
+            this.buttonPrevConv.Click += new System.EventHandler(this.buttonPrevConv_Click_1);
             // 
             // buttonNextConv
             // 
-            this.buttonNextConv.Location = new System.Drawing.Point(532, 580);
+            this.buttonNextConv.Location = new System.Drawing.Point(637, 580);
             this.buttonNextConv.Name = "buttonNextConv";
             this.buttonNextConv.Size = new System.Drawing.Size(150, 90);
-            this.buttonNextConv.TabIndex = 4;
+            this.buttonNextConv.TabIndex = 7;
             this.buttonNextConv.Text = "Next Conversation";
             this.buttonNextConv.UseVisualStyleBackColor = true;
+            this.buttonNextConv.Click += new System.EventHandler(this.buttonNextConv_Click);
             // 
             // FormViewer
             // 
@@ -173,11 +184,13 @@
             this.ClientSize = new System.Drawing.Size(1264, 682);
             this.Controls.Add(this.buttonNextConv);
             this.Controls.Add(this.buttonPrevConv);
-            this.Controls.Add(this.buttonNext);
+            this.Controls.Add(this.buttonNextLine);
             this.Controls.Add(this.display);
             this.Controls.Add(this.grid);
             this.Name = "FormViewer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dialogue Viewer";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormViewer_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -187,8 +200,11 @@
         #endregion
 
         private System.Windows.Forms.DataGridView grid;
+        private FormMain parentForm;
         private string fileDir;
         private DialogueTree dialogue;
+        private System.Windows.Forms.TextBox display;
+        private int dialogueLines;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConversationID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ParticipantName;
         private System.Windows.Forms.DataGridViewTextBoxColumn EmoteType;
@@ -198,8 +214,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SpecialtyCamera;
         private System.Windows.Forms.DataGridViewTextBoxColumn Participants;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConversationSummary;
-        private System.Windows.Forms.TextBox display;
-        private System.Windows.Forms.Button buttonNext;
+        private System.Windows.Forms.Button buttonNextLine;
         private System.Windows.Forms.Button buttonPrevConv;
         private System.Windows.Forms.Button buttonNextConv;
     }
