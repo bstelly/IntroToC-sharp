@@ -55,6 +55,7 @@
             this.buttonViewer.TabIndex = 1;
             this.buttonViewer.Text = "Viewer";
             this.buttonViewer.UseVisualStyleBackColor = true;
+            this.buttonViewer.Click += new System.EventHandler(this.buttonViewer_Click);
             // 
             // openFileDialog
             // 
@@ -89,6 +90,7 @@
             this.displayFileDir.Name = "displayFileDir";
             this.displayFileDir.Size = new System.Drawing.Size(292, 20);
             this.displayFileDir.TabIndex = 5;
+            this.displayFileDir.TextChanged += new System.EventHandler(this.displayFileDir_TextChanged);
             // 
             // FormMain
             // 
@@ -117,6 +119,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox displayFileDir;
         private string fileDir;
+        private FormViewer viewerForm;
     }
 }
 

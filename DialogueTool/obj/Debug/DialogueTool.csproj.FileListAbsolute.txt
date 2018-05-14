@@ -19,3 +19,5 @@ C:\Users\bstel\Documents\GitHub\IntroToC-sharp\DialogueTool\obj\Debug\DialogueTo
 C:\Users\bstel\Documents\GitHub\IntroToC-sharp\DialogueTool\obj\Debug\DialogueTool.csproj.CoreCompileInputs.cache
 C:\Users\bstel\Documents\GitHub\IntroToC-sharp\DialogueTool\obj\Debug\DialogueTool.exe
 C:\Users\bstel\Documents\GitHub\IntroToC-sharp\DialogueTool\obj\Debug\DialogueTool.pdb
+C:\Users\s178022\Documents\Visual Studio 2015\Projects\IntroToC-sharp\DialogueTool\bin\Debug\Newtonsoft.Json.dll
+C:\Users\s178022\Documents\Visual Studio 2015\Projects\IntroToC-sharp\DialogueTool\bin\Debug\Newtonsoft.Json.xml

@@ -27,5 +27,20 @@ namespace DialogueTool
                 fileDir = openFileDialog.FileName;
             }
         }
+
+        private void displayFileDir_TextChanged(object sender, EventArgs e)
+        {
+            fileDir = displayFileDir.Text;
+        }
+
+        private void buttonViewer_Click(object sender, EventArgs e)
+        {
+            if (fileDir != "")
+            {
+                viewerForm = new FormViewer(fileDir);
+                viewerForm.Show();
+                Hide();
+            }
+        }
     }
 }

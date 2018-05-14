@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.grid = new System.Windows.Forms.DataGridView();
             this.ConversationID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ParticipantName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmoteType = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,15 +38,19 @@
             this.SpecialtyCamera = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Participants = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ConversationSummary = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.display = new System.Windows.Forms.TextBox();
+            this.buttonNext = new System.Windows.Forms.Button();
+            this.buttonPrevConv = new System.Windows.Forms.Button();
+            this.buttonNextConv = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // grid
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.grid.AllowUserToAddRows = false;
+            this.grid.AllowUserToDeleteRows = false;
+            this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ConversationID,
             this.ParticipantName,
             this.EmoteType,
@@ -56,10 +60,10 @@
             this.SpecialtyCamera,
             this.Participants,
             this.ConversationSummary});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1240, 343);
-            this.dataGridView1.TabIndex = 0;
+            this.grid.Location = new System.Drawing.Point(12, 12);
+            this.grid.Name = "grid";
+            this.grid.Size = new System.Drawing.Size(1240, 343);
+            this.grid.TabIndex = 0;
             // 
             // ConversationID
             // 
@@ -96,7 +100,7 @@
             this.Line.HeaderText = "Line";
             this.Line.Name = "Line";
             this.Line.ReadOnly = true;
-            this.Line.Width = 200;
+            this.Line.Width = 247;
             // 
             // SpecialityAnimation
             // 
@@ -125,24 +129,66 @@
             this.ConversationSummary.HeaderText = "Conversation Summary";
             this.ConversationSummary.Name = "ConversationSummary";
             this.ConversationSummary.ReadOnly = true;
-            this.ConversationSummary.Width = 200;
+            this.ConversationSummary.Width = 250;
+            // 
+            // display
+            // 
+            this.display.Location = new System.Drawing.Point(101, 379);
+            this.display.Multiline = true;
+            this.display.Name = "display";
+            this.display.Size = new System.Drawing.Size(1058, 96);
+            this.display.TabIndex = 1;
+            // 
+            // buttonNext
+            // 
+            this.buttonNext.Location = new System.Drawing.Point(911, 598);
+            this.buttonNext.Name = "buttonNext";
+            this.buttonNext.Size = new System.Drawing.Size(150, 90);
+            this.buttonNext.TabIndex = 2;
+            this.buttonNext.Text = "Next Dialogue";
+            this.buttonNext.UseVisualStyleBackColor = true;
+            // 
+            // buttonPrevConv
+            // 
+            this.buttonPrevConv.Location = new System.Drawing.Point(704, 580);
+            this.buttonPrevConv.Name = "buttonPrevConv";
+            this.buttonPrevConv.Size = new System.Drawing.Size(150, 90);
+            this.buttonPrevConv.TabIndex = 3;
+            this.buttonPrevConv.Text = "Previous Conversation";
+            this.buttonPrevConv.UseVisualStyleBackColor = true;
+            // 
+            // buttonNextConv
+            // 
+            this.buttonNextConv.Location = new System.Drawing.Point(532, 580);
+            this.buttonNextConv.Name = "buttonNextConv";
+            this.buttonNextConv.Size = new System.Drawing.Size(150, 90);
+            this.buttonNextConv.TabIndex = 4;
+            this.buttonNextConv.Text = "Next Conversation";
+            this.buttonNextConv.UseVisualStyleBackColor = true;
             // 
             // FormViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 682);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.buttonNextConv);
+            this.Controls.Add(this.buttonPrevConv);
+            this.Controls.Add(this.buttonNext);
+            this.Controls.Add(this.display);
+            this.Controls.Add(this.grid);
             this.Name = "FormViewer";
             this.Text = "Dialogue Viewer";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView grid;
+        private string fileDir;
+        private DialogueTree dialogue;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConversationID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ParticipantName;
         private System.Windows.Forms.DataGridViewTextBoxColumn EmoteType;
@@ -152,5 +198,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SpecialtyCamera;
         private System.Windows.Forms.DataGridViewTextBoxColumn Participants;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConversationSummary;
+        private System.Windows.Forms.TextBox display;
+        private System.Windows.Forms.Button buttonNext;
+        private System.Windows.Forms.Button buttonPrevConv;
+        private System.Windows.Forms.Button buttonNextConv;
     }
 }
