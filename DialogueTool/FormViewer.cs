@@ -74,32 +74,15 @@ namespace DialogueTool
                 {
                     for (int j = 0; j < dialogue.DialogueRoot[i].DialogueNode.Count; j++)
                     {
-                        if (display.Text ==
-                            dialogue.DialogueRoot[i].DialogueNode[j].ConversationID + ", " +
-                            dialogue.DialogueRoot[i].DialogueNode[j].ParticipantName + ", " +
-                            dialogue.DialogueRoot[i].DialogueNode[j].EmoteType + ":" +
-                            Environment.NewLine +
-                            "\"" + dialogue.DialogueRoot[i].DialogueNode[j].Line + "\""
-                        )
+                        if (display.Text == GetDisplayText(i, j))
                         {
                             if (dialogue.DialogueRoot[i].DialogueNode.Count == j + 1)
                             {
-                                display.Text = dialogue.DialogueRoot[i + 1].DialogueNode[0].ConversationID + ", ";
-                                display.Text += dialogue.DialogueRoot[i + 1].DialogueNode[0].ParticipantName + ", ";
-                                display.Text += dialogue.DialogueRoot[i + 1].DialogueNode[0].EmoteType + ":";
-                                display.Text += Environment.NewLine;
-                                display.Text += "\"" + dialogue.DialogueRoot[i + 1].DialogueNode[0].Line + "\"";
-
+                                UpdateDisplayText(i + 1, 0);
                                 GetCurrentRowIndex();
-
                                 return;
                             }
-
-                            display.Text = dialogue.DialogueRoot[i].DialogueNode[j + 1].ConversationID + ", ";
-                            display.Text += dialogue.DialogueRoot[i].DialogueNode[j + 1].ParticipantName + ", ";
-                            display.Text += dialogue.DialogueRoot[i].DialogueNode[j + 1].EmoteType + ":";
-                            display.Text += Environment.NewLine;
-                            display.Text += "\"" + dialogue.DialogueRoot[i].DialogueNode[j + 1].Line + "\"";
+                            UpdateDisplayText(i, j + 1);
                             GetCurrentRowIndex();
                             return;
                         }
@@ -108,24 +91,42 @@ namespace DialogueTool
             }
         }
 
+        private void buttonPrevLine_Click(object sender, EventArgs e)
+        {
+            if (!display.Text.Contains(dialogue.DialogueRoot[0].DialogueNode[0].Line))
+            {
+                for (int i = 0; i < dialogue.DialogueRoot.Count; i++)
+                {
+                    for (int j = 0; j < dialogue.DialogueRoot[i].DialogueNode.Count; j++)
+                    {
+                        if (display.Text == GetDisplayText(i, j))
+                        {
+                            if (j == 0)
+                            {
+                                UpdateDisplayText(
+                                    i - 1, dialogue.DialogueRoot[i - 1].DialogueNode.Count - 1);
+                                GetCurrentRowIndex();
+                                return;
+                            }
+                            UpdateDisplayText(i, j - 1);
+                            GetCurrentRowIndex();
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+
+
         private void buttonPrevConv_Click_1(object sender, EventArgs e)
         {
             for (int i = 0; i < dialogue.DialogueRoot.Count; i++)
             {
                 for (int j = 0; j < dialogue.DialogueRoot[i].DialogueNode.Count; j++)
                 {
-                    if (display.Text ==
-                        dialogue.DialogueRoot[i].DialogueNode[j].ConversationID + ", " +
-                        dialogue.DialogueRoot[i].DialogueNode[j].ParticipantName + ", " +
-                        dialogue.DialogueRoot[i].DialogueNode[j].EmoteType + ":" +
-                        Environment.NewLine +
-                        "\"" + dialogue.DialogueRoot[i].DialogueNode[j].Line + "\"" && i > 0)
+                    if (display.Text == GetDisplayText(i, j) && i > 0)
                     {
-                        display.Text = dialogue.DialogueRoot[i - 1].DialogueNode[0].ConversationID + ", ";
-                        display.Text += dialogue.DialogueRoot[i - 1].DialogueNode[0].ParticipantName + ", ";
-                        display.Text += dialogue.DialogueRoot[i - 1].DialogueNode[0].EmoteType + ":";
-                        display.Text += Environment.NewLine;
-                        display.Text += "\"" + dialogue.DialogueRoot[i - 1].DialogueNode[0].Line + "\"";
+                        UpdateDisplayText(i - 1, 0);
                         GetCurrentRowIndex();
                         return;
                     }
@@ -139,19 +140,10 @@ namespace DialogueTool
             {
                 for (int j = 0; j < dialogue.DialogueRoot[i].DialogueNode.Count; j++)
                 {
-                    if (display.Text ==
-                        dialogue.DialogueRoot[i].DialogueNode[j].ConversationID + ", " +
-                        dialogue.DialogueRoot[i].DialogueNode[j].ParticipantName + ", " +
-                        dialogue.DialogueRoot[i].DialogueNode[j].EmoteType + ":" +
-                        Environment.NewLine +
-                        "\"" + dialogue.DialogueRoot[i].DialogueNode[j].Line + "\""
-                        && i < dialogue.DialogueRoot.Count - 1)
+                    if (display.Text == GetDisplayText(i, j) &&
+                        i < dialogue.DialogueRoot.Count - 1)
                     {
-                        display.Text = dialogue.DialogueRoot[i + 1].DialogueNode[0].ConversationID + ", ";
-                        display.Text += dialogue.DialogueRoot[i + 1].DialogueNode[0].ParticipantName + ", ";
-                        display.Text += dialogue.DialogueRoot[i + 1].DialogueNode[0].EmoteType + ":";
-                        display.Text += Environment.NewLine;
-                        display.Text += "\"" + dialogue.DialogueRoot[i + 1].DialogueNode[0].Line + "\"";
+                        UpdateDisplayText(i + 1, 0);
                         GetCurrentRowIndex();
                         return;
                     }
@@ -162,6 +154,25 @@ namespace DialogueTool
         private void FormViewer_FormClosed(object sender, FormClosedEventArgs e)
         {
             parentForm.Close();
+        }
+
+        private string GetDisplayText(int i, int j)
+        {
+            string text = dialogue.DialogueRoot[i].DialogueNode[j].ConversationID + ", " +
+                          dialogue.DialogueRoot[i].DialogueNode[j].ParticipantName + ", " +
+                          dialogue.DialogueRoot[i].DialogueNode[j].EmoteType + ":" +
+                          Environment.NewLine +
+                          "\"" + dialogue.DialogueRoot[i].DialogueNode[j].Line + "\"";
+            return text;
+        }
+
+        private void UpdateDisplayText(int i, int j)
+        {
+            display.Text = dialogue.DialogueRoot[i].DialogueNode[j].ConversationID + ", ";
+            display.Text += dialogue.DialogueRoot[i].DialogueNode[j].ParticipantName + ", ";
+            display.Text += dialogue.DialogueRoot[i].DialogueNode[j].EmoteType + ":";
+            display.Text += Environment.NewLine;
+            display.Text += "\"" + dialogue.DialogueRoot[i].DialogueNode[j].Line + "\"";
         }
 
         private void GetCurrentRowIndex()

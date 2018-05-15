@@ -42,6 +42,11 @@ namespace DialogueTool
                 viewerForm.Show();
                 Hide();
             }
+            else
+            {
+                MessageBox.Show("You must enter a directory for a .json file to view it.",
+                    "No File Selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

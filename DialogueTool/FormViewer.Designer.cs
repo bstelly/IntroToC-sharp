@@ -42,6 +42,7 @@
             this.buttonNextLine = new System.Windows.Forms.Button();
             this.buttonPrevConv = new System.Windows.Forms.Button();
             this.buttonNextConv = new System.Windows.Forms.Button();
+            this.buttonPrevLine = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,7 +66,7 @@
             this.ConversationSummary});
             this.grid.Location = new System.Drawing.Point(12, 12);
             this.grid.Name = "grid";
-            this.grid.Size = new System.Drawing.Size(1240, 343);
+            this.grid.Size = new System.Drawing.Size(1240, 387);
             this.grid.TabIndex = 4;
             this.grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellClick);
             this.grid.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grid_RowHeaderMouseClick);
@@ -140,26 +141,28 @@
             // 
             this.display.BackColor = System.Drawing.Color.White;
             this.display.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.display.Location = new System.Drawing.Point(101, 373);
+            this.display.Location = new System.Drawing.Point(106, 418);
             this.display.Multiline = true;
             this.display.Name = "display";
             this.display.ReadOnly = true;
-            this.display.Size = new System.Drawing.Size(1058, 105);
+            this.display.Size = new System.Drawing.Size(1060, 105);
             this.display.TabIndex = 3;
             // 
             // buttonNextLine
             // 
-            this.buttonNextLine.Location = new System.Drawing.Point(600, 484);
+            this.buttonNextLine.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNextLine.Location = new System.Drawing.Point(634, 560);
             this.buttonNextLine.Name = "buttonNextLine";
             this.buttonNextLine.Size = new System.Drawing.Size(150, 90);
             this.buttonNextLine.TabIndex = 0;
-            this.buttonNextLine.Text = "Next Dialogue Line\r\n";
+            this.buttonNextLine.Text = "Next Dialogue\r\nLine\r\n";
             this.buttonNextLine.UseVisualStyleBackColor = true;
             this.buttonNextLine.Click += new System.EventHandler(this.buttonNextLine_Click);
             // 
             // buttonPrevConv
             // 
-            this.buttonPrevConv.Location = new System.Drawing.Point(481, 580);
+            this.buttonPrevConv.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPrevConv.Location = new System.Drawing.Point(314, 575);
             this.buttonPrevConv.Name = "buttonPrevConv";
             this.buttonPrevConv.Size = new System.Drawing.Size(150, 90);
             this.buttonPrevConv.TabIndex = 1;
@@ -169,19 +172,32 @@
             // 
             // buttonNextConv
             // 
-            this.buttonNextConv.Location = new System.Drawing.Point(637, 580);
+            this.buttonNextConv.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNextConv.Location = new System.Drawing.Point(800, 575);
             this.buttonNextConv.Name = "buttonNextConv";
             this.buttonNextConv.Size = new System.Drawing.Size(150, 90);
             this.buttonNextConv.TabIndex = 2;
-            this.buttonNextConv.Text = "Next Conversation";
+            this.buttonNextConv.Text = "Next\r\nConversation";
             this.buttonNextConv.UseVisualStyleBackColor = true;
             this.buttonNextConv.Click += new System.EventHandler(this.buttonNextConv_Click);
+            // 
+            // buttonPrevLine
+            // 
+            this.buttonPrevLine.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPrevLine.Location = new System.Drawing.Point(480, 560);
+            this.buttonPrevLine.Name = "buttonPrevLine";
+            this.buttonPrevLine.Size = new System.Drawing.Size(150, 90);
+            this.buttonPrevLine.TabIndex = 5;
+            this.buttonPrevLine.Text = "Previous Dialogue Line";
+            this.buttonPrevLine.UseVisualStyleBackColor = true;
+            this.buttonPrevLine.Click += new System.EventHandler(this.buttonPrevLine_Click);
             // 
             // FormViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 682);
+            this.Controls.Add(this.buttonPrevLine);
             this.Controls.Add(this.buttonNextConv);
             this.Controls.Add(this.buttonPrevConv);
             this.Controls.Add(this.buttonNextLine);
@@ -217,5 +233,6 @@
         private System.Windows.Forms.Button buttonNextLine;
         private System.Windows.Forms.Button buttonPrevConv;
         private System.Windows.Forms.Button buttonNextConv;
+        private System.Windows.Forms.Button buttonPrevLine;
     }
 }
