@@ -42,7 +42,7 @@
             this.buttonEditor.Location = new System.Drawing.Point(22, 121);
             this.buttonEditor.Name = "buttonEditor";
             this.buttonEditor.Size = new System.Drawing.Size(160, 90);
-            this.buttonEditor.TabIndex = 0;
+            this.buttonEditor.TabIndex = 2;
             this.buttonEditor.Text = "Editor";
             this.buttonEditor.UseVisualStyleBackColor = true;
             // 
@@ -52,7 +52,7 @@
             this.buttonViewer.Location = new System.Drawing.Point(202, 121);
             this.buttonViewer.Name = "buttonViewer";
             this.buttonViewer.Size = new System.Drawing.Size(160, 90);
-            this.buttonViewer.TabIndex = 1;
+            this.buttonViewer.TabIndex = 3;
             this.buttonViewer.Text = "Viewer";
             this.buttonViewer.UseVisualStyleBackColor = true;
             this.buttonViewer.Click += new System.EventHandler(this.buttonViewer_Click);
@@ -68,7 +68,7 @@
             this.buttonBrowse.Location = new System.Drawing.Point(310, 47);
             this.buttonBrowse.Name = "buttonBrowse";
             this.buttonBrowse.Size = new System.Drawing.Size(62, 23);
-            this.buttonBrowse.TabIndex = 2;
+            this.buttonBrowse.TabIndex = 1;
             this.buttonBrowse.Text = "Browse";
             this.buttonBrowse.UseVisualStyleBackColor = true;
             this.buttonBrowse.Click += new System.EventHandler(this.button1_Click);
@@ -81,7 +81,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(274, 13);
-            this.textBox1.TabIndex = 4;
+            this.textBox1.TabIndex = 0;
             this.textBox1.Text = "Select a .json file. Leave blank if creating a brand new file.";
             // 
             // displayFileDir
@@ -89,7 +89,7 @@
             this.displayFileDir.Location = new System.Drawing.Point(12, 49);
             this.displayFileDir.Name = "displayFileDir";
             this.displayFileDir.Size = new System.Drawing.Size(292, 20);
-            this.displayFileDir.TabIndex = 5;
+            this.displayFileDir.TabIndex = 0;
             this.displayFileDir.TextChanged += new System.EventHandler(this.displayFileDir_TextChanged);
             // 
             // FormMain

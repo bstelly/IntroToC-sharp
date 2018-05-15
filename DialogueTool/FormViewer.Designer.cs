@@ -66,7 +66,7 @@
             this.grid.Location = new System.Drawing.Point(12, 12);
             this.grid.Name = "grid";
             this.grid.Size = new System.Drawing.Size(1240, 343);
-            this.grid.TabIndex = 0;
+            this.grid.TabIndex = 4;
             this.grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellClick);
             this.grid.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grid_RowHeaderMouseClick);
             // 
@@ -145,14 +145,14 @@
             this.display.Name = "display";
             this.display.ReadOnly = true;
             this.display.Size = new System.Drawing.Size(1058, 105);
-            this.display.TabIndex = 1;
+            this.display.TabIndex = 3;
             // 
             // buttonNextLine
             // 
-            this.buttonNextLine.Location = new System.Drawing.Point(559, 484);
+            this.buttonNextLine.Location = new System.Drawing.Point(600, 484);
             this.buttonNextLine.Name = "buttonNextLine";
             this.buttonNextLine.Size = new System.Drawing.Size(150, 90);
-            this.buttonNextLine.TabIndex = 5;
+            this.buttonNextLine.TabIndex = 0;
             this.buttonNextLine.Text = "Next Dialogue Line\r\n";
             this.buttonNextLine.UseVisualStyleBackColor = true;
             this.buttonNextLine.Click += new System.EventHandler(this.buttonNextLine_Click);
@@ -162,7 +162,7 @@
             this.buttonPrevConv.Location = new System.Drawing.Point(481, 580);
             this.buttonPrevConv.Name = "buttonPrevConv";
             this.buttonPrevConv.Size = new System.Drawing.Size(150, 90);
-            this.buttonPrevConv.TabIndex = 6;
+            this.buttonPrevConv.TabIndex = 1;
             this.buttonPrevConv.Text = "Previous Conversation";
             this.buttonPrevConv.UseVisualStyleBackColor = true;
             this.buttonPrevConv.Click += new System.EventHandler(this.buttonPrevConv_Click_1);
@@ -172,7 +172,7 @@
             this.buttonNextConv.Location = new System.Drawing.Point(637, 580);
             this.buttonNextConv.Name = "buttonNextConv";
             this.buttonNextConv.Size = new System.Drawing.Size(150, 90);
-            this.buttonNextConv.TabIndex = 7;
+            this.buttonNextConv.TabIndex = 2;
             this.buttonNextConv.Text = "Next Conversation";
             this.buttonNextConv.UseVisualStyleBackColor = true;
             this.buttonNextConv.Click += new System.EventHandler(this.buttonNextConv_Click);

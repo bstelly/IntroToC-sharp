@@ -16,6 +16,7 @@ namespace DialogueTool
         {
             InitializeComponent();
             fileDir = "";
+            textBox1.TabStop = false;
         }
 
         private void button1_Click(object sender, EventArgs e)

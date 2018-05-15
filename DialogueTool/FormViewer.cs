@@ -27,7 +27,7 @@ namespace DialogueTool
             {
                 for (int j = 0; j < dialogue.DialogueRoot[i].DialogueNode.Count; j++)
                 {
-                    DataGridViewRow row = (DataGridViewRow)grid.RowTemplate.Clone();
+                    DataGridViewRow row = (DataGridViewRow) grid.RowTemplate.Clone();
                     string[] strings =
                     {
                         dialogue.DialogueRoot[i].DialogueNode[j].ConversationID,
@@ -68,7 +68,7 @@ namespace DialogueTool
         private void buttonNextLine_Click(object sender, EventArgs e)
         {
             if (!display.Text.Contains(dialogue.DialogueRoot[dialogue.DialogueRoot.Count - 1]
-               .DialogueNode[dialogue.DialogueRoot[dialogue.DialogueRoot.Count - 1].DialogueNode.Count - 1].Line))
+                .DialogueNode[dialogue.DialogueRoot[dialogue.DialogueRoot.Count - 1].DialogueNode.Count - 1].Line))
             {
                 for (int i = 0; i < dialogue.DialogueRoot.Count; i++)
                 {
@@ -80,7 +80,7 @@ namespace DialogueTool
                             dialogue.DialogueRoot[i].DialogueNode[j].EmoteType + ":" +
                             Environment.NewLine +
                             "\"" + dialogue.DialogueRoot[i].DialogueNode[j].Line + "\""
-                            )
+                        )
                         {
                             if (dialogue.DialogueRoot[i].DialogueNode.Count == j + 1)
                             {
@@ -89,6 +89,9 @@ namespace DialogueTool
                                 display.Text += dialogue.DialogueRoot[i + 1].DialogueNode[0].EmoteType + ":";
                                 display.Text += Environment.NewLine;
                                 display.Text += "\"" + dialogue.DialogueRoot[i + 1].DialogueNode[0].Line + "\"";
+
+                                GetCurrentRowIndex();
+
                                 return;
                             }
 
@@ -97,6 +100,7 @@ namespace DialogueTool
                             display.Text += dialogue.DialogueRoot[i].DialogueNode[j + 1].EmoteType + ":";
                             display.Text += Environment.NewLine;
                             display.Text += "\"" + dialogue.DialogueRoot[i].DialogueNode[j + 1].Line + "\"";
+                            GetCurrentRowIndex();
                             return;
                         }
                     }
@@ -110,13 +114,19 @@ namespace DialogueTool
             {
                 for (int j = 0; j < dialogue.DialogueRoot[i].DialogueNode.Count; j++)
                 {
-                    if (display.Text.Contains(dialogue.DialogueRoot[i].DialogueNode[j].Line) && i > 0)
+                    if (display.Text ==
+                        dialogue.DialogueRoot[i].DialogueNode[j].ConversationID + ", " +
+                        dialogue.DialogueRoot[i].DialogueNode[j].ParticipantName + ", " +
+                        dialogue.DialogueRoot[i].DialogueNode[j].EmoteType + ":" +
+                        Environment.NewLine +
+                        "\"" + dialogue.DialogueRoot[i].DialogueNode[j].Line + "\"" && i > 0)
                     {
                         display.Text = dialogue.DialogueRoot[i - 1].DialogueNode[0].ConversationID + ", ";
                         display.Text += dialogue.DialogueRoot[i - 1].DialogueNode[0].ParticipantName + ", ";
                         display.Text += dialogue.DialogueRoot[i - 1].DialogueNode[0].EmoteType + ":";
                         display.Text += Environment.NewLine;
                         display.Text += "\"" + dialogue.DialogueRoot[i - 1].DialogueNode[0].Line + "\"";
+                        GetCurrentRowIndex();
                         return;
                     }
                 }
@@ -129,14 +139,20 @@ namespace DialogueTool
             {
                 for (int j = 0; j < dialogue.DialogueRoot[i].DialogueNode.Count; j++)
                 {
-                    if (display.Text.Contains(dialogue.DialogueRoot[i].DialogueNode[j].Line) &&
-                        i < dialogue.DialogueRoot.Count - 1)
+                    if (display.Text ==
+                        dialogue.DialogueRoot[i].DialogueNode[j].ConversationID + ", " +
+                        dialogue.DialogueRoot[i].DialogueNode[j].ParticipantName + ", " +
+                        dialogue.DialogueRoot[i].DialogueNode[j].EmoteType + ":" +
+                        Environment.NewLine +
+                        "\"" + dialogue.DialogueRoot[i].DialogueNode[j].Line + "\""
+                        && i < dialogue.DialogueRoot.Count - 1)
                     {
                         display.Text = dialogue.DialogueRoot[i + 1].DialogueNode[0].ConversationID + ", ";
                         display.Text += dialogue.DialogueRoot[i + 1].DialogueNode[0].ParticipantName + ", ";
                         display.Text += dialogue.DialogueRoot[i + 1].DialogueNode[0].EmoteType + ":";
                         display.Text += Environment.NewLine;
                         display.Text += "\"" + dialogue.DialogueRoot[i + 1].DialogueNode[0].Line + "\"";
+                        GetCurrentRowIndex();
                         return;
                     }
                 }
@@ -146,6 +162,29 @@ namespace DialogueTool
         private void FormViewer_FormClosed(object sender, FormClosedEventArgs e)
         {
             parentForm.Close();
+        }
+
+        private void GetCurrentRowIndex()
+        {
+            grid.ClearSelection();
+            int count = 0;
+
+            for (int i = 0; i < dialogue.DialogueRoot.Count; i++)
+            {
+                for (int j = 0; j < dialogue.DialogueRoot[i].DialogueNode.Count; j++)
+                {
+                    count += 1;
+                    if (display.Text.Contains(
+                            dialogue.DialogueRoot[i].DialogueNode[j].ConversationID) &&
+                        display.Text.Contains(
+                            dialogue.DialogueRoot[i].DialogueNode[j].Line))
+                    {
+                        count -= 1;
+                        grid.Rows[count].Selected = true;
+                        grid.CurrentCell = grid.Rows[count].Cells[0];
+                    }
+                }
+            }
         }
     }
 }
