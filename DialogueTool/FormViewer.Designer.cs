@@ -209,6 +209,7 @@
             // buttonFontSizeUp
             // 
             this.buttonFontSizeUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonFontSizeUp.Location = new System.Drawing.Point(1181, 438);
             this.buttonFontSizeUp.Name = "buttonFontSizeUp";
             this.buttonFontSizeUp.Size = new System.Drawing.Size(35, 35);
             this.buttonFontSizeUp.TabIndex = 7;
@@ -219,6 +220,7 @@
             // buttonFontSizeDown
             // 
             this.buttonFontSizeDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonFontSizeDown.Location = new System.Drawing.Point(1181, 481);
             this.buttonFontSizeDown.Name = "buttonFontSizeDown";
             this.buttonFontSizeDown.Size = new System.Drawing.Size(35, 35);
             this.buttonFontSizeDown.TabIndex = 8;
