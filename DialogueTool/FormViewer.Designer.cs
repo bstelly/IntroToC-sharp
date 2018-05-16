@@ -43,6 +43,10 @@
             this.buttonPrevConv = new System.Windows.Forms.Button();
             this.buttonNextConv = new System.Windows.Forms.Button();
             this.buttonPrevLine = new System.Windows.Forms.Button();
+            this.buttonRefresh = new System.Windows.Forms.Button();
+            this.buttonFontSizeUp = new System.Windows.Forms.Button();
+            this.buttonFontSizeDown = new System.Windows.Forms.Button();
+            this.buttonClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -141,11 +145,11 @@
             // 
             this.display.BackColor = System.Drawing.Color.White;
             this.display.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.display.Location = new System.Drawing.Point(106, 418);
+            this.display.Location = new System.Drawing.Point(106, 413);
             this.display.Multiline = true;
             this.display.Name = "display";
             this.display.ReadOnly = true;
-            this.display.Size = new System.Drawing.Size(1060, 105);
+            this.display.Size = new System.Drawing.Size(1060, 128);
             this.display.TabIndex = 3;
             // 
             // buttonNextLine
@@ -192,11 +196,55 @@
             this.buttonPrevLine.UseVisualStyleBackColor = true;
             this.buttonPrevLine.Click += new System.EventHandler(this.buttonPrevLine_Click);
             // 
+            // buttonRefresh
+            // 
+            this.buttonRefresh.Location = new System.Drawing.Point(12, 640);
+            this.buttonRefresh.Name = "buttonRefresh";
+            this.buttonRefresh.Size = new System.Drawing.Size(83, 30);
+            this.buttonRefresh.TabIndex = 6;
+            this.buttonRefresh.Text = "Refresh";
+            this.buttonRefresh.UseVisualStyleBackColor = true;
+            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
+            // 
+            // buttonFontSizeUp
+            // 
+            this.buttonFontSizeUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonFontSizeUp.Name = "buttonFontSizeUp";
+            this.buttonFontSizeUp.Size = new System.Drawing.Size(35, 35);
+            this.buttonFontSizeUp.TabIndex = 7;
+            this.buttonFontSizeUp.Text = "\r\n ";
+            this.buttonFontSizeUp.UseVisualStyleBackColor = true;
+            this.buttonFontSizeUp.Click += new System.EventHandler(this.buttonFontSizeUp_Click);
+            // 
+            // buttonFontSizeDown
+            // 
+            this.buttonFontSizeDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonFontSizeDown.Name = "buttonFontSizeDown";
+            this.buttonFontSizeDown.Size = new System.Drawing.Size(35, 35);
+            this.buttonFontSizeDown.TabIndex = 8;
+            this.buttonFontSizeDown.Text = " ";
+            this.buttonFontSizeDown.UseVisualStyleBackColor = true;
+            this.buttonFontSizeDown.Click += new System.EventHandler(this.buttonFontSizeDown_Click);
+            // 
+            // buttonClose
+            // 
+            this.buttonClose.Location = new System.Drawing.Point(1169, 640);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(83, 30);
+            this.buttonClose.TabIndex = 9;
+            this.buttonClose.Text = "Close";
+            this.buttonClose.UseVisualStyleBackColor = true;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
+            // 
             // FormViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 682);
+            this.Controls.Add(this.buttonClose);
+            this.Controls.Add(this.buttonFontSizeDown);
+            this.Controls.Add(this.buttonFontSizeUp);
+            this.Controls.Add(this.buttonRefresh);
             this.Controls.Add(this.buttonPrevLine);
             this.Controls.Add(this.buttonNextConv);
             this.Controls.Add(this.buttonPrevConv);
@@ -234,5 +282,9 @@
         private System.Windows.Forms.Button buttonPrevConv;
         private System.Windows.Forms.Button buttonNextConv;
         private System.Windows.Forms.Button buttonPrevLine;
+        private System.Windows.Forms.Button buttonRefresh;
+        private System.Windows.Forms.Button buttonFontSizeUp;
+        private System.Windows.Forms.Button buttonFontSizeDown;
+        private System.Windows.Forms.Button buttonClose;
     }
 }
