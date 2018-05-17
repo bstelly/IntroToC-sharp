@@ -22,3 +22,6 @@ C:\Users\bstel\Documents\GitHub\IntroToC-sharp\DialogueTool\obj\Debug\DialogueTo
 C:\Users\s178022\Documents\Visual Studio 2015\Projects\IntroToC-sharp\DialogueTool\bin\Debug\Newtonsoft.Json.dll
 C:\Users\s178022\Documents\Visual Studio 2015\Projects\IntroToC-sharp\DialogueTool\bin\Debug\Newtonsoft.Json.xml
 C:\Users\s178022\Documents\Visual Studio 2015\Projects\IntroToC-sharp\DialogueTool\obj\Debug\DialogueTool.FormEditor.resources
+C:\Users\bstel\Documents\GitHub\IntroToC-sharp\DialogueTool\bin\Debug\Newtonsoft.Json.dll
+C:\Users\bstel\Documents\GitHub\IntroToC-sharp\DialogueTool\bin\Debug\Newtonsoft.Json.xml
+C:\Users\bstel\Documents\GitHub\IntroToC-sharp\DialogueTool\obj\Debug\DialogueTool.FormEditor.resources
