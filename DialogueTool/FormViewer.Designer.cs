@@ -68,10 +68,9 @@
             this.SpecialtyCamera,
             this.Participants,
             this.ConversationSummary});
-            this.grid.Location = new System.Drawing.Point(16, 15);
-            this.grid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grid.Location = new System.Drawing.Point(12, 12);
             this.grid.Name = "grid";
-            this.grid.Size = new System.Drawing.Size(1653, 476);
+            this.grid.Size = new System.Drawing.Size(1240, 387);
             this.grid.TabIndex = 4;
             this.grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellClick);
             this.grid.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grid_RowHeaderMouseClick);
@@ -146,21 +145,19 @@
             // 
             this.display.BackColor = System.Drawing.Color.White;
             this.display.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.display.Location = new System.Drawing.Point(141, 508);
-            this.display.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.display.Location = new System.Drawing.Point(106, 413);
             this.display.Multiline = true;
             this.display.Name = "display";
             this.display.ReadOnly = true;
-            this.display.Size = new System.Drawing.Size(1412, 157);
+            this.display.Size = new System.Drawing.Size(1060, 128);
             this.display.TabIndex = 3;
             // 
             // buttonNextLine
             // 
             this.buttonNextLine.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNextLine.Location = new System.Drawing.Point(845, 689);
-            this.buttonNextLine.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonNextLine.Location = new System.Drawing.Point(634, 560);
             this.buttonNextLine.Name = "buttonNextLine";
-            this.buttonNextLine.Size = new System.Drawing.Size(200, 111);
+            this.buttonNextLine.Size = new System.Drawing.Size(150, 90);
             this.buttonNextLine.TabIndex = 0;
             this.buttonNextLine.Text = "Next Dialogue\r\nLine\r\n";
             this.buttonNextLine.UseVisualStyleBackColor = true;
@@ -169,10 +166,9 @@
             // buttonPrevConv
             // 
             this.buttonPrevConv.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonPrevConv.Location = new System.Drawing.Point(419, 708);
-            this.buttonPrevConv.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonPrevConv.Location = new System.Drawing.Point(314, 575);
             this.buttonPrevConv.Name = "buttonPrevConv";
-            this.buttonPrevConv.Size = new System.Drawing.Size(200, 111);
+            this.buttonPrevConv.Size = new System.Drawing.Size(150, 90);
             this.buttonPrevConv.TabIndex = 1;
             this.buttonPrevConv.Text = "Previous Conversation";
             this.buttonPrevConv.UseVisualStyleBackColor = true;
@@ -181,10 +177,9 @@
             // buttonNextConv
             // 
             this.buttonNextConv.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNextConv.Location = new System.Drawing.Point(1067, 708);
-            this.buttonNextConv.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonNextConv.Location = new System.Drawing.Point(800, 575);
             this.buttonNextConv.Name = "buttonNextConv";
-            this.buttonNextConv.Size = new System.Drawing.Size(200, 111);
+            this.buttonNextConv.Size = new System.Drawing.Size(150, 90);
             this.buttonNextConv.TabIndex = 2;
             this.buttonNextConv.Text = "Next\r\nConversation";
             this.buttonNextConv.UseVisualStyleBackColor = true;
@@ -193,10 +188,9 @@
             // buttonPrevLine
             // 
             this.buttonPrevLine.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonPrevLine.Location = new System.Drawing.Point(640, 689);
-            this.buttonPrevLine.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonPrevLine.Location = new System.Drawing.Point(480, 560);
             this.buttonPrevLine.Name = "buttonPrevLine";
-            this.buttonPrevLine.Size = new System.Drawing.Size(200, 111);
+            this.buttonPrevLine.Size = new System.Drawing.Size(150, 90);
             this.buttonPrevLine.TabIndex = 5;
             this.buttonPrevLine.Text = "Previous Dialogue Line";
             this.buttonPrevLine.UseVisualStyleBackColor = true;
@@ -204,10 +198,9 @@
             // 
             // buttonRefresh
             // 
-            this.buttonRefresh.Location = new System.Drawing.Point(16, 788);
-            this.buttonRefresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonRefresh.Location = new System.Drawing.Point(12, 640);
             this.buttonRefresh.Name = "buttonRefresh";
-            this.buttonRefresh.Size = new System.Drawing.Size(111, 37);
+            this.buttonRefresh.Size = new System.Drawing.Size(83, 30);
             this.buttonRefresh.TabIndex = 6;
             this.buttonRefresh.Text = "Refresh";
             this.buttonRefresh.UseVisualStyleBackColor = true;
@@ -216,10 +209,9 @@
             // buttonFontSizeUp
             // 
             this.buttonFontSizeUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonFontSizeUp.Location = new System.Drawing.Point(1575, 539);
-            this.buttonFontSizeUp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonFontSizeUp.Location = new System.Drawing.Point(1181, 438);
             this.buttonFontSizeUp.Name = "buttonFontSizeUp";
-            this.buttonFontSizeUp.Size = new System.Drawing.Size(47, 43);
+            this.buttonFontSizeUp.Size = new System.Drawing.Size(35, 35);
             this.buttonFontSizeUp.TabIndex = 7;
             this.buttonFontSizeUp.Text = "\r\n ";
             this.buttonFontSizeUp.UseVisualStyleBackColor = true;
@@ -228,10 +220,9 @@
             // buttonFontSizeDown
             // 
             this.buttonFontSizeDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonFontSizeDown.Location = new System.Drawing.Point(1575, 592);
-            this.buttonFontSizeDown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonFontSizeDown.Location = new System.Drawing.Point(1181, 481);
             this.buttonFontSizeDown.Name = "buttonFontSizeDown";
-            this.buttonFontSizeDown.Size = new System.Drawing.Size(47, 43);
+            this.buttonFontSizeDown.Size = new System.Drawing.Size(35, 35);
             this.buttonFontSizeDown.TabIndex = 8;
             this.buttonFontSizeDown.Text = " ";
             this.buttonFontSizeDown.UseVisualStyleBackColor = true;
@@ -239,10 +230,9 @@
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(1559, 788);
-            this.buttonClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonClose.Location = new System.Drawing.Point(1169, 640);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(111, 37);
+            this.buttonClose.Size = new System.Drawing.Size(83, 30);
             this.buttonClose.TabIndex = 9;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = true;
@@ -250,11 +240,11 @@
             // 
             // FormViewer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1685, 839);
+            this.ClientSize = new System.Drawing.Size(1264, 682);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.buttonFontSizeDown);
             this.Controls.Add(this.buttonFontSizeUp);
@@ -265,7 +255,6 @@
             this.Controls.Add(this.buttonNextLine);
             this.Controls.Add(this.display);
             this.Controls.Add(this.grid);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormViewer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dialogue Viewer";

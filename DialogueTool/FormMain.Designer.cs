@@ -45,6 +45,7 @@
             this.buttonEditor.TabIndex = 2;
             this.buttonEditor.Text = "Editor";
             this.buttonEditor.UseVisualStyleBackColor = true;
+            this.buttonEditor.Click += new System.EventHandler(this.buttonEditor_Click);
             // 
             // buttonViewer
             // 
@@ -77,11 +78,12 @@
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(12, 74);
+            this.textBox1.Location = new System.Drawing.Point(14, 74);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(274, 13);
             this.textBox1.TabIndex = 0;
+            this.textBox1.TabStop = false;
             this.textBox1.Text = "Select a .json file. Leave blank if creating a brand new file.";
             // 
             // displayFileDir
@@ -120,6 +122,7 @@
         private System.Windows.Forms.TextBox displayFileDir;
         private string fileDir;
         private FormViewer viewerForm;
+        private FormEditor editorForm;
     }
 }
 

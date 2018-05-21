@@ -14,21 +14,21 @@ namespace DialogueTool
 {
     public partial class FormViewer : Form
     {
-        //Prototype:
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
+        //Prototype: FormViewer(FormMain parent, string directory)
+        //Arguments: takes in a FormMain and a string
+        //Description: Creates an instance of the FormViewer class and creates rows for
+        //              the data grid
+        //Precondition: There must be an instance of the FormMain class
+        //Postcondition: An instance of the FormViewer class is created
+        //Protection Level: public
         public FormViewer(FormMain parent, string directory)
         {
             parentForm = parent;
             fileDir = directory;
             InitializeComponent();
             grid.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
-            dialogue = JsonConvert.DeserializeObject<DialogueTree>(File.ReadAllText(
-                fileDir));
-
+            dialogue = new DialogueTree();
+            dialogue.Load(directory);
             for (int i = 0; i < dialogue.DialogueRoot.Count; i++)
             {
                 for (int j = 0; j < dialogue.DialogueRoot[i].DialogueNode.Count; j++)
@@ -57,12 +57,14 @@ namespace DialogueTool
 
         }
 
-        //Prototype:
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
+        //Prototype: void grid_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        //Arguments: an object and a DataGridViewCellMouseEventArgs
+        //Description: When the data grid view's header is clicked the text box displays
+        //              the Conversation ID, Participant Name, Emote, and line text within its
+        //              cells
+        //Precondition: There must be an instance of the FormViewer class
+        //Postcondition: The text box is updated
+        //Protection Level: private
         private void grid_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             string convID = grid.SelectedRows[0].Cells[0].Value + string.Empty;
@@ -73,12 +75,13 @@ namespace DialogueTool
                            Environment.NewLine + "\"" + line + "\"";
         }
 
-        //Prototype:
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
+        //Prototype: void grid_CellClick(object sender, DataGridViewCellEventArgs e)
+        //Arguments: an object and a DataGridViewCellEventArgs
+        //Description: If a cell within the data grid view is selected, the display box
+        //              will display the text within that cell
+        //Precondition: There must be an instance of the FormViewer class
+        //Postcondition: The textbox is updated
+        //Protection Level: private
         private void grid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (grid.SelectedCells.Count == 1 && e.RowIndex != -1)
@@ -87,7 +90,7 @@ namespace DialogueTool
             }
         }
 
-        //Prototype:
+        //Prototype:void buttonNextLine_Click(object sender, EventArgs e)
         //Arguments:
         //Description:
         //Precondition:
@@ -119,7 +122,7 @@ namespace DialogueTool
             }
         }
 
-        //Prototype:
+        //Prototype:void buttonPrevLine_Click(object sender, EventArgs e)
         //Arguments:
         //Description:
         //Precondition:
@@ -152,7 +155,7 @@ namespace DialogueTool
         }
 
 
-        //Prototype:
+        //Prototype:void buttonPrevConv_Click_1(object sender, EventArgs e)
         //Arguments:
         //Description:
         //Precondition:
@@ -174,7 +177,7 @@ namespace DialogueTool
             }
         }
 
-        //Prototype:
+        //Prototype: void buttonNextConv_Click(object sender, EventArgs e)
         //Arguments:
         //Description:
         //Precondition:
@@ -197,7 +200,7 @@ namespace DialogueTool
             }
         }
 
-        //Prototype:
+        //Prototype: FormViewer_FormClosed(object sender, FormClosedEventArgs e)
         //Arguments:
         //Description:
         //Precondition:
@@ -208,7 +211,7 @@ namespace DialogueTool
             parentForm.Close();
         }
 
-        //Prototype:
+        //Prototype:string GetDisplayText(int i, int j)
         //Arguments:
         //Description:
         //Precondition:
@@ -224,7 +227,7 @@ namespace DialogueTool
             return text;
         }
 
-        //Prototype:
+        //Prototype: void UpdateDisplayText(int i, int j)
         //Arguments:
         //Description:
         //Precondition:
@@ -239,7 +242,7 @@ namespace DialogueTool
             display.Text += "\"" + dialogue.DialogueRoot[i].DialogueNode[j].Line + "\"";
         }
 
-        //Prototype:
+        //Prototype: void GetCurrentRowIndex()
         //Arguments:
         //Description:
         //Precondition:
@@ -268,7 +271,7 @@ namespace DialogueTool
             }
         }
 
-        //Prototype:
+        //Prototype: void buttonRefresh_Click(object sender, EventArgs e)
         //Arguments:
         //Description:
         //Precondition:
@@ -303,7 +306,7 @@ namespace DialogueTool
             }
         }
 
-        //Prototype:
+        //Prototype: void buttonFontSizeUp_Click(object sender, EventArgs e)
         //Arguments:
         //Description:
         //Precondition:
@@ -314,7 +317,7 @@ namespace DialogueTool
             display.Font = new Font(display.Font.FontFamily, display.Font.Size + 1);
         }
 
-        //Prototype:
+        //Prototype: void buttonFontSizeDown_Click(object sender, EventArgs e)
         //Arguments:
         //Description:
         //Precondition:
@@ -328,7 +331,7 @@ namespace DialogueTool
             }
         }
 
-        //Prototype:
+        //Prototype: void buttonClose_Click(object sender, EventArgs e)
         //Arguments:
         //Description:
         //Precondition:

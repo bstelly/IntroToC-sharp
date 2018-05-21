@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace DialogueTool
 {
@@ -15,6 +16,66 @@ namespace DialogueTool
         public FormEditor(FormMain parent, string directory)
         {
             InitializeComponent();
+            dialogue = new DialogueTree();
+            parentForm = parent;
+            fileDir = directory;
+            if (File.Exists(fileDir))
+            {
+                int count = 1;
+                dialogue.Load(fileDir);
+                for (int i = 0; i < dialogue.DialogueRoot.Count; i++)
+                {
+                    Tree.Nodes[0].Nodes.Add(new TreeNode());
+                    for (int j = 0; j < dialogue.DialogueRoot[i].DialogueNode.Count; j++)
+                    {
+                        Tree.Nodes[0].Nodes[i].Nodes.Add(new TreeNode());
+                        Tree.Nodes[0].Nodes[i].Text = dialogue.DialogueRoot[i].DialogueNode[j].ConversationID;
+                        Tree.Nodes[0].Nodes[i].Nodes[j].Text = count.ToString();
+                        count += 1;
+                    }
+
+                    count = 1;
+                }
+            }
+
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            TreeNode f = new TreeNode();
+            f = Tree.Nodes[3].Nodes[1];
+        }
+
+        private void FormEditor_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            parentForm.Close();
+        }
+
+        private void Tree_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+
+        }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Tree.Nodes[0].IsSelected)
+            {
+                Tree.Nodes.Add(new TreeNode("new"));
+            }
+            for (int i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
+            {
+                if (Tree.Nodes[0].Nodes[i].IsSelected)
+                {
+                    Tree.Nodes[0].Nodes[i].Nodes.Add(new TreeNode("new"));
+                }
+                for (int j = 0; j < Tree.Nodes[0].Nodes[i].Nodes.Count; j++)
+                {
+                    if (Tree.Nodes[0].Nodes[i].Nodes[j].IsSelected)
+                    {
+                        Tree.Nodes[0].Nodes[i].Nodes.Add(new TreeNode("new"));
+                    }
+                }
+            }
         }
     }
 }

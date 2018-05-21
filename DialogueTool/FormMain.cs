@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,6 @@ namespace DialogueTool
         {
             InitializeComponent();
             fileDir = "";
-            textBox1.TabStop = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -36,16 +36,46 @@ namespace DialogueTool
 
         private void buttonViewer_Click(object sender, EventArgs e)
         {
-            if (fileDir != "")
+            if (File.Exists(fileDir))
             {
                 viewerForm = new FormViewer(this, fileDir);
                 viewerForm.Show();
                 Hide();
             }
+            else if(fileDir != "")
+            {
+                MessageBox.Show("The file could not be found. It may have been moved or " +
+                                "had its name changed",
+                    "Directory not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             else
             {
-                MessageBox.Show("You must enter a directory for a .json file to view it.",
+                MessageBox.Show("You must enter the directory for a .json file to view it.",
                     "No File Selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonEditor_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(fileDir))
+            {
+                editorForm = new FormEditor(this, fileDir);
+                editorForm.Show();
+                Hide();
+            }
+            else if (fileDir != "")
+            {
+                MessageBox.Show("The file could not be found. It may have been moved or " +
+                                "had its name changed",
+                    "Directory not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                {
+                    editorForm = new FormEditor(this, fileDir);
+                    editorForm.Show();
+                    Hide();
+                }
             }
         }
     }
