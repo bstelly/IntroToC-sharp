@@ -77,7 +77,7 @@ namespace DialogueTool
 
         //Prototype: void grid_CellClick(object sender, DataGridViewCellEventArgs e)
         //Arguments: an object and a DataGridViewCellEventArgs
-        //Description: If a cell within the data grid view is selected, the display box
+        //Description: If a cell within the data grid view is selected, the textbox
         //              will display the text within that cell
         //Precondition: There must be an instance of the FormViewer class
         //Postcondition: The textbox is updated
@@ -91,11 +91,12 @@ namespace DialogueTool
         }
 
         //Prototype:void buttonNextLine_Click(object sender, EventArgs e)
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
+        //Arguments: an object and an EventArgs
+        //Description: If the buttonNextLine is clicked and a row in the dataGridView is selected,
+        //the text box will display the text in the row after the currently selected row.
+        //Precondition: There must be an instance of the FormViewer class
+        //Postcondition: The textbox is updated
+        //Protection Level: private
         private void buttonNextLine_Click(object sender, EventArgs e)
         {
             if (!display.Text.Contains(dialogue.DialogueRoot[dialogue.DialogueRoot.Count - 1]
@@ -123,11 +124,13 @@ namespace DialogueTool
         }
 
         //Prototype:void buttonPrevLine_Click(object sender, EventArgs e)
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
+        //Arguments: an object and an EventArgs
+        //Description: If the buttonPrevLine is clicked and a row in the dataGridView is
+        //             selected, the textbox will display the text in the row before the
+        //             currently selected row
+        //Precondition: There must be an instance of the FormViewer class
+        //Postcondition: The textbox is updated
+        //Protection Level: private
         private void buttonPrevLine_Click(object sender, EventArgs e)
         {
             if (!display.Text.Contains(dialogue.DialogueRoot[0].DialogueNode[0].Line))
@@ -155,12 +158,13 @@ namespace DialogueTool
         }
 
 
-        //Prototype:void buttonPrevConv_Click_1(object sender, EventArgs e)
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
+        //Prototype: void buttonPrevConv_Click_1(object sender, EventArgs e)
+        //Arguments: an object and an EventArgs
+        //Description: If the buttonPrevConv is clicked, the textbox will display the
+        //             dialogue in the previous DialogueRoot from the currently selected line
+        //Precondition: There must be an instance of the FormViewer class
+        //Postcondition: The textbox is updated
+        //Protection Level: private
         private void buttonPrevConv_Click_1(object sender, EventArgs e)
         {
             for (int i = 0; i < dialogue.DialogueRoot.Count; i++)
@@ -178,11 +182,12 @@ namespace DialogueTool
         }
 
         //Prototype: void buttonNextConv_Click(object sender, EventArgs e)
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
+        //Arguments: an object and an EventArgs
+        //Description: If the buttonNextConv is clicked, the textbox will display the
+        //             dialogue in the Next DialogueRoot from the currently selected line
+        //Precondition: There must be an instance of the FormViewer class
+        //Postcondition: The textbox is updated
+        //Protection Level: private
         private void buttonNextConv_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < dialogue.DialogueRoot.Count; i++)
@@ -201,22 +206,23 @@ namespace DialogueTool
         }
 
         //Prototype: FormViewer_FormClosed(object sender, FormClosedEventArgs e)
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
+        //Arguments: an object and a FormClosedEventArgs
+        //Description: If the instance of FormViewer is closed, the parent form will also
+        //             close resulting in the program ending
+        //Precondition: There must be an instance of the FormViewer class
+        //Postcondition: The main form is closed and the program is finished running
+        //Protection Level: private
         private void FormViewer_FormClosed(object sender, FormClosedEventArgs e)
         {
             parentForm.Close();
         }
 
         //Prototype:string GetDisplayText(int i, int j)
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
+        //Arguments: two intergers
+        //Description: Returns a string which is the text to be displayed to the textbox
+        //Precondition:There must be an instance of the FormViewer class
+        //Postcondition: A string is returned
+        //Protection Level: private
         private string GetDisplayText(int i, int j)
         {
             string text = dialogue.DialogueRoot[i].DialogueNode[j].ConversationID + ", " +
@@ -228,26 +234,26 @@ namespace DialogueTool
         }
 
         //Prototype: void UpdateDisplayText(int i, int j)
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
+        //Arguments: Two intergers
+        //Description: Updates the textbox that displays information
+        //Precondition: There must be an instance of the FormViewer class
+        //Postcondition: The textbox is updated
+        //Protection Level: private
         private void UpdateDisplayText(int i, int j)
         {
-            display.Text = dialogue.DialogueRoot[i].DialogueNode[j].ConversationID + ", ";
-            display.Text += dialogue.DialogueRoot[i].DialogueNode[j].ParticipantName + ", ";
-            display.Text += dialogue.DialogueRoot[i].DialogueNode[j].EmoteType + ":";
-            display.Text += Environment.NewLine;
-            display.Text += "\"" + dialogue.DialogueRoot[i].DialogueNode[j].Line + "\"";
+            display.Text = GetDisplayText(i, j);
+
         }
 
         //Prototype: void GetCurrentRowIndex()
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
+        //Arguments: None
+        //Description: Selects the row currently being viewed in the textbox when the text
+        //             in the textBox is changed by a button; Also allows the dataGridView
+        //             to scroll with the buttons when a button selects a row that is not
+        //             currently visible
+        //Precondition: There must be an instance of the FormViewer class
+        //Postcondition: A new row is selected
+        //Protection Level: private
         private void GetCurrentRowIndex()
         {
             grid.ClearSelection();
@@ -272,11 +278,14 @@ namespace DialogueTool
         }
 
         //Prototype: void buttonRefresh_Click(object sender, EventArgs e)
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
+        //Arguments: an object and an EventArgs
+        //Description: Causes the dataGridView to refresh by deserializing the same json file
+        //             into the dialogue variable. The dataGridView is then cleared and then
+        //             re-populated with the information from the dialogue variable
+        //Precondition: There must be an instance of the FormViewer class
+        //Postcondition: The dataGridView is cleared and re-populated, showing changes made
+        //               to the json file, if any
+        //Protection Level: private
         private void buttonRefresh_Click(object sender, EventArgs e)
         {
             dialogue = JsonConvert.DeserializeObject<DialogueTree>(File.ReadAllText(
@@ -307,22 +316,24 @@ namespace DialogueTool
         }
 
         //Prototype: void buttonFontSizeUp_Click(object sender, EventArgs e)
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
+        //Arguments: An object and an EventArgs
+        //Description: Assigns the display.Font a new Font with a font size one value more
+        //             than the current value
+        //Precondition: There must be an instance of the FormViewer class
+        //Postcondition: The text in the textbox will now be displayed with the new font size
+        //Protection Level: private
         private void buttonFontSizeUp_Click(object sender, EventArgs e)
         {
             display.Font = new Font(display.Font.FontFamily, display.Font.Size + 1);
         }
 
         //Prototype: void buttonFontSizeDown_Click(object sender, EventArgs e)
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
+        //Arguments: An object and an EventArgs
+        //Description: Assigns the display.Font a new Font with a font size one value more
+        //             than the current value
+        //Precondition: There must be an instance of the FormViewer class
+        //Postcondition: The text in the textbox will now be displayed with the new font size
+        //Protection Level: private
         private void buttonFontSizeDown_Click(object sender, EventArgs e)
         {
             if(display.Font.Size != 1)
@@ -332,11 +343,11 @@ namespace DialogueTool
         }
 
         //Prototype: void buttonClose_Click(object sender, EventArgs e)
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
+        //Arguments: An object and an EventArgs
+        //Description: if the buttonClose is clicked the parent form will close and end the app.
+        //Precondition: There must be an instance of the FormViewer class
+        //Postcondition: The main form is closed and the application stops running
+        //Protection Level: private
         private void buttonClose_Click(object sender, EventArgs e)
         {
             parentForm.Close();
