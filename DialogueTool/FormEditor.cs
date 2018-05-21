@@ -53,27 +53,21 @@ namespace DialogueTool
 
         private void Tree_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-
+            Tree.SelectedNode = e.Node;
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (Tree.Nodes[0].IsSelected)
             {
-                Tree.Nodes.Add(new TreeNode("new"));
+                Tree.Nodes[0].Nodes.Add(new TreeNode("New Root"));
+                return;
             }
             for (int i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
             {
                 if (Tree.Nodes[0].Nodes[i].IsSelected)
                 {
-                    Tree.Nodes[0].Nodes[i].Nodes.Add(new TreeNode("new"));
-                }
-                for (int j = 0; j < Tree.Nodes[0].Nodes[i].Nodes.Count; j++)
-                {
-                    if (Tree.Nodes[0].Nodes[i].Nodes[j].IsSelected)
-                    {
-                        Tree.Nodes[0].Nodes[i].Nodes.Add(new TreeNode("new"));
-                    }
+                    Tree.Nodes[0].Nodes[i].Nodes.Add(new TreeNode("New Node"));
                 }
             }
         }
