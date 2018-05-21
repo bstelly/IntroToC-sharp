@@ -47,6 +47,7 @@
             this.buttonFontSizeUp = new System.Windows.Forms.Button();
             this.buttonFontSizeDown = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
+            this.textBoxFontSize = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -209,7 +210,7 @@
             // buttonFontSizeUp
             // 
             this.buttonFontSizeUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonFontSizeUp.Location = new System.Drawing.Point(1181, 438);
+            this.buttonFontSizeUp.Location = new System.Drawing.Point(1181, 433);
             this.buttonFontSizeUp.Name = "buttonFontSizeUp";
             this.buttonFontSizeUp.Size = new System.Drawing.Size(35, 35);
             this.buttonFontSizeUp.TabIndex = 7;
@@ -220,7 +221,7 @@
             // buttonFontSizeDown
             // 
             this.buttonFontSizeDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonFontSizeDown.Location = new System.Drawing.Point(1181, 481);
+            this.buttonFontSizeDown.Location = new System.Drawing.Point(1181, 486);
             this.buttonFontSizeDown.Name = "buttonFontSizeDown";
             this.buttonFontSizeDown.Size = new System.Drawing.Size(35, 35);
             this.buttonFontSizeDown.TabIndex = 8;
@@ -238,6 +239,17 @@
             this.buttonClose.UseVisualStyleBackColor = true;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
+            // textBoxFontSize
+            // 
+            this.textBoxFontSize.BackColor = System.Drawing.SystemColors.Control;
+            this.textBoxFontSize.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxFontSize.Location = new System.Drawing.Point(1176, 471);
+            this.textBoxFontSize.Name = "textBoxFontSize";
+            this.textBoxFontSize.ReadOnly = true;
+            this.textBoxFontSize.Size = new System.Drawing.Size(44, 13);
+            this.textBoxFontSize.TabIndex = 10;
+            this.textBoxFontSize.Text = "Font Size";
+            // 
             // FormViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -245,6 +257,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1264, 682);
+            this.Controls.Add(this.textBoxFontSize);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.buttonFontSizeDown);
             this.Controls.Add(this.buttonFontSizeUp);
@@ -290,5 +303,6 @@
         private System.Windows.Forms.Button buttonFontSizeUp;
         private System.Windows.Forms.Button buttonFontSizeDown;
         private System.Windows.Forms.Button buttonClose;
+        private System.Windows.Forms.TextBox textBoxFontSize;
     }
 }
