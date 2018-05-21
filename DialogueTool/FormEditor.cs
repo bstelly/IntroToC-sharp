@@ -40,12 +40,6 @@ namespace DialogueTool
 
         }
 
-        private void buttonAdd_Click(object sender, EventArgs e)
-        {
-            TreeNode f = new TreeNode();
-            f = Tree.Nodes[3].Nodes[1];
-        }
-
         private void FormEditor_FormClosed(object sender, FormClosedEventArgs e)
         {
             parentForm.Close();
@@ -70,6 +64,21 @@ namespace DialogueTool
                     Tree.Nodes[0].Nodes[i].Nodes.Add(new TreeNode("New Node"));
                 }
             }
+        }
+
+        private void buttonAddNode_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonAddRoot_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonRemove_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

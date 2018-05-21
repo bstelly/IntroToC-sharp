@@ -32,16 +32,19 @@ namespace DialogueTool
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Dialogue Node");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Dialogue Root", new System.Windows.Forms.TreeNode[] {
-            treeNode1});
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Dialogue Tree", new System.Windows.Forms.TreeNode[] {
-            treeNode2});
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Dialogue Node");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Dialogue Root", new System.Windows.Forms.TreeNode[] {
+            treeNode4});
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Dialogue Tree", new System.Windows.Forms.TreeNode[] {
+            treeNode5});
             this.Tree = new System.Windows.Forms.TreeView();
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonAdd = new System.Windows.Forms.Button();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.buttonAddNode = new System.Windows.Forms.Button();
+            this.buttonAddRoot = new System.Windows.Forms.Button();
+            this.buttonRemove = new System.Windows.Forms.Button();
             this.contextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,14 +54,14 @@ namespace DialogueTool
             this.Tree.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tree.Location = new System.Drawing.Point(12, 12);
             this.Tree.Name = "Tree";
-            treeNode1.Name = "Dialogue Node";
-            treeNode1.Text = "Dialogue Node";
-            treeNode2.Name = "Dialogue Root";
-            treeNode2.Text = "Dialogue Root";
-            treeNode3.Name = "Dialogue Tree";
-            treeNode3.Text = "Dialogue Tree";
+            treeNode4.Name = "Dialogue Node";
+            treeNode4.Text = "Dialogue Node";
+            treeNode5.Name = "Dialogue Root";
+            treeNode5.Text = "Dialogue Root";
+            treeNode6.Name = "Dialogue Tree";
+            treeNode6.Text = "Dialogue Tree";
             this.Tree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3});
+            treeNode6});
             this.Tree.Size = new System.Drawing.Size(207, 658);
             this.Tree.TabIndex = 0;
             this.Tree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.Tree_NodeMouseClick);
@@ -84,16 +87,39 @@ namespace DialogueTool
             this.removeToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.removeToolStripMenuItem.Text = "Remove";
             // 
-            // buttonAdd
+            // buttonAddNode
             // 
-            this.buttonAdd.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAdd.Location = new System.Drawing.Point(225, 354);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(79, 28);
-            this.buttonAdd.TabIndex = 1;
-            this.buttonAdd.Text = "Add Root";
-            this.buttonAdd.UseVisualStyleBackColor = true;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            this.buttonAddNode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddNode.Location = new System.Drawing.Point(225, 69);
+            this.buttonAddNode.Name = "buttonAddNode";
+            this.buttonAddNode.Size = new System.Drawing.Size(67, 51);
+            this.buttonAddNode.TabIndex = 2;
+            this.buttonAddNode.Text = "Add Node";
+            this.toolTip.SetToolTip(this.buttonAddNode, "Adds a Node to the selected Dialogue Root");
+            this.buttonAddNode.UseVisualStyleBackColor = true;
+            this.buttonAddNode.Click += new System.EventHandler(this.buttonAddNode_Click);
+            // 
+            // buttonAddRoot
+            // 
+            this.buttonAddRoot.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddRoot.Location = new System.Drawing.Point(225, 12);
+            this.buttonAddRoot.Name = "buttonAddRoot";
+            this.buttonAddRoot.Size = new System.Drawing.Size(67, 51);
+            this.buttonAddRoot.TabIndex = 3;
+            this.buttonAddRoot.Text = "Add Root";
+            this.buttonAddRoot.UseVisualStyleBackColor = true;
+            this.buttonAddRoot.Click += new System.EventHandler(this.buttonAddRoot_Click);
+            // 
+            // buttonRemove
+            // 
+            this.buttonRemove.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonRemove.Location = new System.Drawing.Point(225, 647);
+            this.buttonRemove.Name = "buttonRemove";
+            this.buttonRemove.Size = new System.Drawing.Size(122, 23);
+            this.buttonRemove.TabIndex = 4;
+            this.buttonRemove.Text = "Remove Root/Node";
+            this.buttonRemove.UseVisualStyleBackColor = false;
+            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
             // 
             // FormEditor
             // 
@@ -102,7 +128,9 @@ namespace DialogueTool
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1264, 682);
-            this.Controls.Add(this.buttonAdd);
+            this.Controls.Add(this.buttonRemove);
+            this.Controls.Add(this.buttonAddRoot);
+            this.Controls.Add(this.buttonAddNode);
             this.Controls.Add(this.Tree);
             this.Name = "FormEditor";
             this.Text = "Dialogue Editor";
@@ -119,9 +147,12 @@ namespace DialogueTool
         private DialogueTree dialogue;
         private TreeNode currentNode;
         private System.Windows.Forms.TreeView Tree;
-        private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.ContextMenuStrip contextMenu;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
+        private ToolTip toolTip;
+        private Button buttonAddNode;
+        private Button buttonAddRoot;
+        private Button buttonRemove;
     }
 }
