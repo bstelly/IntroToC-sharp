@@ -1,4 +1,6 @@
 ﻿using System;
+using System.DirectoryServices.ActiveDirectory;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -58,6 +60,20 @@ namespace DialogueTool
         private void Tree_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             Tree.SelectedNode = e.Node;
+
+            for (var i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
+                if (Tree.Nodes[0].Nodes[i].IsSelected)
+                {
+                    textBoxConvIdInput.BackColor = Color.White;
+                    textBoxConvIdInput.ReadOnly = false;
+                }
+                else
+                {
+                    textBoxConvIdInput.BackColor = SystemColors.Control;
+                    textBoxConvIdInput.ReadOnly = true;
+                }
+
+            //Conversation ID and Participants should be assigned on Root click
         }
 
         //Prototype:

@@ -1,4 +1,8 @@
-﻿namespace DialogueTool
+﻿using System.Windows.Forms;
+
+
+namespace DialogueTool
+
 {
     partial class FormViewer
     {
@@ -28,6 +32,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.grid = new System.Windows.Forms.DataGridView();
             this.ConversationID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ParticipantName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,11 +48,12 @@
             this.buttonPrevConv = new System.Windows.Forms.Button();
             this.buttonNextConv = new System.Windows.Forms.Button();
             this.buttonPrevLine = new System.Windows.Forms.Button();
-            this.buttonRefresh = new System.Windows.Forms.Button();
             this.buttonFontSizeUp = new System.Windows.Forms.Button();
             this.buttonFontSizeDown = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
             this.textBoxFontSize = new System.Windows.Forms.TextBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.buttonRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -197,16 +203,6 @@
             this.buttonPrevLine.UseVisualStyleBackColor = true;
             this.buttonPrevLine.Click += new System.EventHandler(this.buttonPrevLine_Click);
             // 
-            // buttonRefresh
-            // 
-            this.buttonRefresh.Location = new System.Drawing.Point(12, 640);
-            this.buttonRefresh.Name = "buttonRefresh";
-            this.buttonRefresh.Size = new System.Drawing.Size(83, 30);
-            this.buttonRefresh.TabIndex = 6;
-            this.buttonRefresh.Text = "Refresh";
-            this.buttonRefresh.UseVisualStyleBackColor = true;
-            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
-            // 
             // buttonFontSizeUp
             // 
             this.buttonFontSizeUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -250,6 +246,17 @@
             this.textBoxFontSize.TabIndex = 10;
             this.textBoxFontSize.Text = "Font Size";
             // 
+            // buttonRefresh
+            // 
+            this.buttonRefresh.Location = new System.Drawing.Point(12, 640);
+            this.buttonRefresh.Name = "buttonRefresh";
+            this.buttonRefresh.Size = new System.Drawing.Size(83, 30);
+            this.buttonRefresh.TabIndex = 6;
+            this.buttonRefresh.Text = "Refresh";
+            this.toolTip1.SetToolTip(this.buttonRefresh, "Reloads the .json file into the Viewer");
+            this.buttonRefresh.UseVisualStyleBackColor = true;
+            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
+            // 
             // FormViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -281,7 +288,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView grid;
-        private FormMain parentForm;
+        private Form parentForm;
         private string fileDir;
         private DialogueTree dialogue;
         private System.Windows.Forms.TextBox display;
@@ -299,10 +306,11 @@
         private System.Windows.Forms.Button buttonPrevConv;
         private System.Windows.Forms.Button buttonNextConv;
         private System.Windows.Forms.Button buttonPrevLine;
-        private System.Windows.Forms.Button buttonRefresh;
         private System.Windows.Forms.Button buttonFontSizeUp;
         private System.Windows.Forms.Button buttonFontSizeDown;
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.TextBox textBoxFontSize;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private Button buttonRefresh;
     }
 }

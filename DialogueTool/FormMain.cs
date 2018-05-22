@@ -34,7 +34,7 @@ namespace DialogueTool
             }
         }
 
-        //Prototype:
+        /////Prototype:
         //Arguments:
         //Description:
         //Precondition:

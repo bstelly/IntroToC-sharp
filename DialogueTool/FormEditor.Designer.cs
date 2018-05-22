@@ -1,5 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace DialogueTool
 {
@@ -47,6 +46,10 @@ namespace DialogueTool
             this.buttonRemove = new System.Windows.Forms.Button();
             this.checkBoxRootWarn = new System.Windows.Forms.CheckBox();
             this.checkBoxNodeWarn = new System.Windows.Forms.CheckBox();
+            this.textBoxConvIdInput = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxParticipantInput = new System.Windows.Forms.TextBox();
             this.contextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -149,6 +152,45 @@ namespace DialogueTool
             this.checkBoxNodeWarn.Text = "Warn when removing Nodes";
             this.checkBoxNodeWarn.UseVisualStyleBackColor = true;
             // 
+            // textBoxConvIdInput
+            // 
+            this.textBoxConvIdInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxConvIdInput.Location = new System.Drawing.Point(261, 333);
+            this.textBoxConvIdInput.Name = "textBoxConvIdInput";
+            this.textBoxConvIdInput.ReadOnly = true;
+            this.textBoxConvIdInput.Size = new System.Drawing.Size(120, 23);
+            this.textBoxConvIdInput.TabIndex = 7;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Location = new System.Drawing.Point(261, 317);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(100, 13);
+            this.textBox2.TabIndex = 8;
+            this.textBox2.Text = "Conversation ID";
+            // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Location = new System.Drawing.Point(423, 317);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(100, 13);
+            this.textBox1.TabIndex = 9;
+            this.textBox1.Text = "No. of Participants";
+            // 
+            // textBoxParticipantInput
+            // 
+            this.textBoxParticipantInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxParticipantInput.Location = new System.Drawing.Point(423, 333);
+            this.textBoxParticipantInput.Name = "textBoxParticipantInput";
+            this.textBoxParticipantInput.ReadOnly = true;
+            this.textBoxParticipantInput.Size = new System.Drawing.Size(37, 23);
+            this.textBoxParticipantInput.TabIndex = 10;
+            // 
             // FormEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -156,12 +198,17 @@ namespace DialogueTool
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1264, 682);
+            this.Controls.Add(this.textBoxParticipantInput);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBoxConvIdInput);
             this.Controls.Add(this.checkBoxNodeWarn);
             this.Controls.Add(this.checkBoxRootWarn);
             this.Controls.Add(this.buttonRemove);
             this.Controls.Add(this.buttonAddRoot);
             this.Controls.Add(this.buttonAddNode);
             this.Controls.Add(this.Tree);
+            this.MaximumSize = new System.Drawing.Size(1280, 720);
             this.Name = "FormEditor";
             this.Text = "Dialogue Editor";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormEditor_FormClosed);
@@ -186,5 +233,9 @@ namespace DialogueTool
         private Button buttonRemove;
         private CheckBox checkBoxRootWarn;
         private CheckBox checkBoxNodeWarn;
+        private TextBox textBoxConvIdInput;
+        private TextBox textBox2;
+        private TextBox textBox1;
+        private TextBox textBoxParticipantInput;
     }
 }
