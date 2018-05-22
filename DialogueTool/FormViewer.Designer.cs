@@ -150,7 +150,7 @@
             this.display.Multiline = true;
             this.display.Name = "display";
             this.display.ReadOnly = true;
-            this.display.Size = new System.Drawing.Size(1060, 128);
+            this.display.Size = new System.Drawing.Size(1060, 129);
             this.display.TabIndex = 3;
             // 
             // buttonNextLine
@@ -221,7 +221,7 @@
             // buttonFontSizeDown
             // 
             this.buttonFontSizeDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonFontSizeDown.Location = new System.Drawing.Point(1181, 486);
+            this.buttonFontSizeDown.Location = new System.Drawing.Point(1181, 487);
             this.buttonFontSizeDown.Name = "buttonFontSizeDown";
             this.buttonFontSizeDown.Size = new System.Drawing.Size(35, 35);
             this.buttonFontSizeDown.TabIndex = 8;

@@ -1,28 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DialogueTool
 {
     public partial class FormMain : Form
     {
-
+        //Prototype:
+        //Arguments:
+        //Description:
+        //Precondition:
+        //Postcondition:
+        //Protection Level:
         public FormMain()
         {
             InitializeComponent();
             fileDir = "";
         }
 
+
+       /// <summary>
+       ///button1 slicked
+       /// </summary>
+       /// <param name="sender">whosent it</param>
+       /// <param name="e">the arguments</param>
         private void button1_Click(object sender, EventArgs e)
         {
-            DialogResult result = openFileDialog.ShowDialog();
+            var result = openFileDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
                 displayFileDir.Text = openFileDialog.FileName;
@@ -30,11 +34,23 @@ namespace DialogueTool
             }
         }
 
+        //Prototype:
+        //Arguments:
+        //Description:
+        //Precondition:
+        //Postcondition:
+        //Protection Level:
         private void displayFileDir_TextChanged(object sender, EventArgs e)
         {
             fileDir = displayFileDir.Text;
         }
 
+        //Prototype:
+        //Arguments:
+        //Description:
+        //Precondition:
+        //Postcondition:
+        //Protection Level:
         private void buttonViewer_Click(object sender, EventArgs e)
         {
             if (File.Exists(fileDir))
@@ -43,7 +59,7 @@ namespace DialogueTool
                 viewerForm.Show();
                 Hide();
             }
-            else if(fileDir != "")
+            else if (fileDir != "")
             {
                 MessageBox.Show("The file could not be found. It may have been moved or " +
                                 "had its name changed",
@@ -56,6 +72,12 @@ namespace DialogueTool
             }
         }
 
+        //Prototype:
+        //Arguments:
+        //Description:
+        //Precondition:
+        //Postcondition:
+        //Protection Level:
         private void buttonEditor_Click(object sender, EventArgs e)
         {
             if (File.Exists(fileDir))
