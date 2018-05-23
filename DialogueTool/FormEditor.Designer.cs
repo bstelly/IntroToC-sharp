@@ -31,11 +31,11 @@ namespace DialogueTool
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("1");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Dialogue Root", new System.Windows.Forms.TreeNode[] {
-            treeNode4});
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Dialogue Tree", new System.Windows.Forms.TreeNode[] {
-            treeNode5});
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("1");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Dialogue Root", new System.Windows.Forms.TreeNode[] {
+            treeNode1});
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Dialogue Tree", new System.Windows.Forms.TreeNode[] {
+            treeNode2});
             this.Tree = new System.Windows.Forms.TreeView();
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,47 +57,50 @@ namespace DialogueTool
             // 
             this.Tree.ContextMenuStrip = this.contextMenu;
             this.Tree.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Tree.Location = new System.Drawing.Point(12, 12);
+            this.Tree.Location = new System.Drawing.Point(16, 15);
+            this.Tree.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Tree.Name = "Tree";
-            treeNode4.Name = "1";
-            treeNode4.Text = "1";
-            treeNode5.Name = "Dialogue Root";
-            treeNode5.Text = "Dialogue Root";
-            treeNode6.Name = "Dialogue Tree";
-            treeNode6.Text = "Dialogue Tree";
+            treeNode1.Name = "1";
+            treeNode1.Text = "1";
+            treeNode2.Name = "Dialogue Root";
+            treeNode2.Text = "Dialogue Root";
+            treeNode3.Name = "Dialogue Tree";
+            treeNode3.Text = "Dialogue Tree";
             this.Tree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode6});
-            this.Tree.Size = new System.Drawing.Size(207, 658);
+            treeNode3});
+            this.Tree.Size = new System.Drawing.Size(275, 809);
             this.Tree.TabIndex = 0;
             this.Tree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.Tree_NodeMouseClick);
             // 
             // contextMenu
             // 
+            this.contextMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addToolStripMenuItem,
             this.removeToolStripMenuItem});
             this.contextMenu.Name = "contextMenu";
-            this.contextMenu.Size = new System.Drawing.Size(118, 48);
+            this.contextMenu.Size = new System.Drawing.Size(133, 52);
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(132, 24);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // removeToolStripMenuItem
             // 
             this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(132, 24);
             this.removeToolStripMenuItem.Text = "Remove";
             // 
             // buttonAddNode
             // 
             this.buttonAddNode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAddNode.Location = new System.Drawing.Point(225, 69);
+            this.buttonAddNode.Location = new System.Drawing.Point(300, 85);
+            this.buttonAddNode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonAddNode.Name = "buttonAddNode";
-            this.buttonAddNode.Size = new System.Drawing.Size(67, 51);
+            this.buttonAddNode.Size = new System.Drawing.Size(89, 63);
             this.buttonAddNode.TabIndex = 2;
             this.buttonAddNode.Text = "Add Node";
             this.toolTip.SetToolTip(this.buttonAddNode, "Adds a Node to the selected Dialogue Root");
@@ -107,9 +110,10 @@ namespace DialogueTool
             // buttonAddRoot
             // 
             this.buttonAddRoot.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAddRoot.Location = new System.Drawing.Point(225, 12);
+            this.buttonAddRoot.Location = new System.Drawing.Point(300, 15);
+            this.buttonAddRoot.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonAddRoot.Name = "buttonAddRoot";
-            this.buttonAddRoot.Size = new System.Drawing.Size(67, 51);
+            this.buttonAddRoot.Size = new System.Drawing.Size(89, 63);
             this.buttonAddRoot.TabIndex = 3;
             this.buttonAddRoot.Text = "Add Root";
             this.toolTip.SetToolTip(this.buttonAddRoot, "Add a Root to the Tree");
@@ -119,9 +123,10 @@ namespace DialogueTool
             // buttonRemove
             // 
             this.buttonRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonRemove.Location = new System.Drawing.Point(225, 619);
+            this.buttonRemove.Location = new System.Drawing.Point(300, 762);
+            this.buttonRemove.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonRemove.Name = "buttonRemove";
-            this.buttonRemove.Size = new System.Drawing.Size(102, 51);
+            this.buttonRemove.Size = new System.Drawing.Size(136, 63);
             this.buttonRemove.TabIndex = 4;
             this.buttonRemove.Text = "Remove Root/Node";
             this.toolTip.SetToolTip(this.buttonRemove, "Remove the currently selected Root or Node");
@@ -133,9 +138,10 @@ namespace DialogueTool
             this.checkBoxRootWarn.AutoSize = true;
             this.checkBoxRootWarn.Checked = true;
             this.checkBoxRootWarn.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxRootWarn.Location = new System.Drawing.Point(337, 625);
+            this.checkBoxRootWarn.Location = new System.Drawing.Point(449, 769);
+            this.checkBoxRootWarn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxRootWarn.Name = "checkBoxRootWarn";
-            this.checkBoxRootWarn.Size = new System.Drawing.Size(158, 17);
+            this.checkBoxRootWarn.Size = new System.Drawing.Size(204, 21);
             this.checkBoxRootWarn.TabIndex = 5;
             this.checkBoxRootWarn.Text = "Warn when removing Roots";
             this.checkBoxRootWarn.UseVisualStyleBackColor = true;
@@ -145,9 +151,10 @@ namespace DialogueTool
             this.checkBoxNodeWarn.AutoSize = true;
             this.checkBoxNodeWarn.Checked = true;
             this.checkBoxNodeWarn.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxNodeWarn.Location = new System.Drawing.Point(337, 647);
+            this.checkBoxNodeWarn.Location = new System.Drawing.Point(449, 796);
+            this.checkBoxNodeWarn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxNodeWarn.Name = "checkBoxNodeWarn";
-            this.checkBoxNodeWarn.Size = new System.Drawing.Size(161, 17);
+            this.checkBoxNodeWarn.Size = new System.Drawing.Size(208, 21);
             this.checkBoxNodeWarn.TabIndex = 6;
             this.checkBoxNodeWarn.Text = "Warn when removing Nodes";
             this.checkBoxNodeWarn.UseVisualStyleBackColor = true;
@@ -155,49 +162,54 @@ namespace DialogueTool
             // textBoxConvIdInput
             // 
             this.textBoxConvIdInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxConvIdInput.Location = new System.Drawing.Point(261, 333);
+            this.textBoxConvIdInput.Location = new System.Drawing.Point(348, 410);
+            this.textBoxConvIdInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxConvIdInput.Name = "textBoxConvIdInput";
             this.textBoxConvIdInput.ReadOnly = true;
-            this.textBoxConvIdInput.Size = new System.Drawing.Size(120, 23);
+            this.textBoxConvIdInput.Size = new System.Drawing.Size(159, 26);
             this.textBoxConvIdInput.TabIndex = 7;
             // 
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.SystemColors.Control;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Location = new System.Drawing.Point(261, 317);
+            this.textBox2.Location = new System.Drawing.Point(348, 390);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(100, 13);
+            this.textBox2.Size = new System.Drawing.Size(133, 15);
             this.textBox2.TabIndex = 8;
             this.textBox2.Text = "Conversation ID";
             // 
             // textBox1
             // 
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(423, 317);
+            this.textBox1.Location = new System.Drawing.Point(564, 374);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 13);
+            this.textBox1.Size = new System.Drawing.Size(133, 32);
             this.textBox1.TabIndex = 9;
-            this.textBox1.Text = "No. of Participants";
+            this.textBox1.Text = "Number of\r\nParticipants";
             // 
             // textBoxParticipantInput
             // 
             this.textBoxParticipantInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxParticipantInput.Location = new System.Drawing.Point(423, 333);
+            this.textBoxParticipantInput.Location = new System.Drawing.Point(564, 410);
+            this.textBoxParticipantInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxParticipantInput.Name = "textBoxParticipantInput";
             this.textBoxParticipantInput.ReadOnly = true;
-            this.textBoxParticipantInput.Size = new System.Drawing.Size(37, 23);
+            this.textBoxParticipantInput.Size = new System.Drawing.Size(48, 26);
             this.textBoxParticipantInput.TabIndex = 10;
             // 
             // FormEditor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1264, 682);
+            this.ClientSize = new System.Drawing.Size(1683, 828);
             this.Controls.Add(this.textBoxParticipantInput);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.textBox2);
@@ -208,7 +220,8 @@ namespace DialogueTool
             this.Controls.Add(this.buttonAddRoot);
             this.Controls.Add(this.buttonAddNode);
             this.Controls.Add(this.Tree);
-            this.MaximumSize = new System.Drawing.Size(1280, 720);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximumSize = new System.Drawing.Size(1701, 875);
             this.Name = "FormEditor";
             this.Text = "Dialogue Editor";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormEditor_FormClosed);
