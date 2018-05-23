@@ -78,7 +78,8 @@ namespace DialogueTool
             this.Tree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1});
             this.Tree.Size = new System.Drawing.Size(207, 658);
-            this.Tree.TabIndex = 0;
+            this.Tree.TabIndex = 11;
+            this.Tree.TabStop = false;
             this.Tree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.Tree_NodeMouseClick);
             // 
             // contextMenu
@@ -110,7 +111,7 @@ namespace DialogueTool
             this.buttonAddNode.Location = new System.Drawing.Point(225, 69);
             this.buttonAddNode.Name = "buttonAddNode";
             this.buttonAddNode.Size = new System.Drawing.Size(102, 51);
-            this.buttonAddNode.TabIndex = 2;
+            this.buttonAddNode.TabIndex = 1;
             this.buttonAddNode.Text = "Add Node";
             this.toolTip.SetToolTip(this.buttonAddNode, "Adds a Node to the selected Dialogue Root");
             this.buttonAddNode.UseVisualStyleBackColor = true;
@@ -122,7 +123,7 @@ namespace DialogueTool
             this.buttonAddRoot.Location = new System.Drawing.Point(225, 12);
             this.buttonAddRoot.Name = "buttonAddRoot";
             this.buttonAddRoot.Size = new System.Drawing.Size(102, 51);
-            this.buttonAddRoot.TabIndex = 3;
+            this.buttonAddRoot.TabIndex = 0;
             this.buttonAddRoot.Text = "Add Root";
             this.toolTip.SetToolTip(this.buttonAddRoot, "Add a Root to the Tree");
             this.buttonAddRoot.UseVisualStyleBackColor = true;
@@ -135,6 +136,7 @@ namespace DialogueTool
             this.buttonRemove.Name = "buttonRemove";
             this.buttonRemove.Size = new System.Drawing.Size(102, 51);
             this.buttonRemove.TabIndex = 4;
+            this.buttonRemove.TabStop = false;
             this.buttonRemove.Text = "Remove Root/Node";
             this.toolTip.SetToolTip(this.buttonRemove, "Remove the currently selected Root or Node");
             this.buttonRemove.UseVisualStyleBackColor = true;
@@ -149,6 +151,7 @@ namespace DialogueTool
             this.checkBoxRootWarn.Name = "checkBoxRootWarn";
             this.checkBoxRootWarn.Size = new System.Drawing.Size(158, 17);
             this.checkBoxRootWarn.TabIndex = 5;
+            this.checkBoxRootWarn.TabStop = false;
             this.checkBoxRootWarn.Text = "Warn when removing Roots";
             this.checkBoxRootWarn.UseVisualStyleBackColor = true;
             // 
@@ -161,6 +164,7 @@ namespace DialogueTool
             this.checkBoxNodeWarn.Name = "checkBoxNodeWarn";
             this.checkBoxNodeWarn.Size = new System.Drawing.Size(161, 17);
             this.checkBoxNodeWarn.TabIndex = 6;
+            this.checkBoxNodeWarn.TabStop = false;
             this.checkBoxNodeWarn.Text = "Warn when removing Nodes";
             this.checkBoxNodeWarn.UseVisualStyleBackColor = true;
             // 
@@ -171,7 +175,8 @@ namespace DialogueTool
             this.textBoxConvIdInput.Name = "textBoxConvIdInput";
             this.textBoxConvIdInput.ReadOnly = true;
             this.textBoxConvIdInput.Size = new System.Drawing.Size(120, 23);
-            this.textBoxConvIdInput.TabIndex = 7;
+            this.textBoxConvIdInput.TabIndex = 2;
+            this.textBoxConvIdInput.TextChanged += new System.EventHandler(this.textBoxConvIdInput_TextChanged);
             // 
             // infoText1
             // 
@@ -182,6 +187,7 @@ namespace DialogueTool
             this.infoText1.ReadOnly = true;
             this.infoText1.Size = new System.Drawing.Size(100, 13);
             this.infoText1.TabIndex = 8;
+            this.infoText1.TabStop = false;
             this.infoText1.Text = "Conversation ID";
             // 
             // infoText2
@@ -193,6 +199,7 @@ namespace DialogueTool
             this.infoText2.ReadOnly = true;
             this.infoText2.Size = new System.Drawing.Size(100, 26);
             this.infoText2.TabIndex = 9;
+            this.infoText2.TabStop = false;
             this.infoText2.Text = "Number of\r\nParticipants";
             // 
             // textBoxParticipantNumInput
@@ -202,7 +209,8 @@ namespace DialogueTool
             this.textBoxParticipantNumInput.Name = "textBoxParticipantNumInput";
             this.textBoxParticipantNumInput.ReadOnly = true;
             this.textBoxParticipantNumInput.Size = new System.Drawing.Size(37, 23);
-            this.textBoxParticipantNumInput.TabIndex = 10;
+            this.textBoxParticipantNumInput.TabIndex = 3;
+            this.textBoxParticipantNumInput.TextChanged += new System.EventHandler(this.textBoxParticipantNumInput_TextChanged);
             // 
             // infoText9
             // 
@@ -212,6 +220,7 @@ namespace DialogueTool
             this.infoText9.ReadOnly = true;
             this.infoText9.Size = new System.Drawing.Size(110, 13);
             this.infoText9.TabIndex = 11;
+            this.infoText9.TabStop = false;
             this.infoText9.Text = "Conversation Summary";
             // 
             // infoText4
@@ -223,16 +232,18 @@ namespace DialogueTool
             this.infoText4.ReadOnly = true;
             this.infoText4.Size = new System.Drawing.Size(100, 13);
             this.infoText4.TabIndex = 13;
+            this.infoText4.TabStop = false;
             this.infoText4.Text = "Emote Type";
             // 
             // infoText8
             // 
             this.infoText8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.infoText8.Location = new System.Drawing.Point(882, 120);
+            this.infoText8.Location = new System.Drawing.Point(891, 120);
             this.infoText8.Name = "infoText8";
             this.infoText8.ReadOnly = true;
             this.infoText8.Size = new System.Drawing.Size(85, 13);
             this.infoText8.TabIndex = 14;
+            this.infoText8.TabStop = false;
             this.infoText8.Text = "Specialty Camera";
             // 
             // infoText7
@@ -243,16 +254,18 @@ namespace DialogueTool
             this.infoText7.ReadOnly = true;
             this.infoText7.Size = new System.Drawing.Size(100, 13);
             this.infoText7.TabIndex = 15;
+            this.infoText7.TabStop = false;
             this.infoText7.Text = "Speciality Animation";
             // 
             // infoText6
             // 
             this.infoText6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.infoText6.Location = new System.Drawing.Point(576, 208);
+            this.infoText6.Location = new System.Drawing.Point(576, 204);
             this.infoText6.Name = "infoText6";
             this.infoText6.ReadOnly = true;
             this.infoText6.Size = new System.Drawing.Size(100, 13);
             this.infoText6.TabIndex = 16;
+            this.infoText6.TabStop = false;
             this.infoText6.Text = "Line";
             // 
             // infoText5
@@ -263,6 +276,7 @@ namespace DialogueTool
             this.infoText5.ReadOnly = true;
             this.infoText5.Size = new System.Drawing.Size(100, 13);
             this.infoText5.TabIndex = 17;
+            this.infoText5.TabStop = false;
             this.infoText5.Text = "Side";
             // 
             // infoText3
@@ -273,6 +287,7 @@ namespace DialogueTool
             this.infoText3.ReadOnly = true;
             this.infoText3.Size = new System.Drawing.Size(100, 13);
             this.infoText3.TabIndex = 18;
+            this.infoText3.TabStop = false;
             this.infoText3.Text = "Participant Name";
             // 
             // textBoxSpecialityAnimationInput
@@ -282,7 +297,8 @@ namespace DialogueTool
             this.textBoxSpecialityAnimationInput.Name = "textBoxSpecialityAnimationInput";
             this.textBoxSpecialityAnimationInput.ReadOnly = true;
             this.textBoxSpecialityAnimationInput.Size = new System.Drawing.Size(126, 23);
-            this.textBoxSpecialityAnimationInput.TabIndex = 19;
+            this.textBoxSpecialityAnimationInput.TabIndex = 7;
+            this.textBoxSpecialityAnimationInput.TextChanged += new System.EventHandler(this.textBoxSpecialityAnimationInput_TextChanged);
             // 
             // textBoxSideInput
             // 
@@ -291,7 +307,8 @@ namespace DialogueTool
             this.textBoxSideInput.Name = "textBoxSideInput";
             this.textBoxSideInput.ReadOnly = true;
             this.textBoxSideInput.Size = new System.Drawing.Size(110, 23);
-            this.textBoxSideInput.TabIndex = 22;
+            this.textBoxSideInput.TabIndex = 6;
+            this.textBoxSideInput.TextChanged += new System.EventHandler(this.textBoxSideInput_TextChanged);
             // 
             // textBoxSpecialtyCameraInput
             // 
@@ -300,7 +317,8 @@ namespace DialogueTool
             this.textBoxSpecialtyCameraInput.Name = "textBoxSpecialtyCameraInput";
             this.textBoxSpecialtyCameraInput.ReadOnly = true;
             this.textBoxSpecialtyCameraInput.Size = new System.Drawing.Size(124, 23);
-            this.textBoxSpecialtyCameraInput.TabIndex = 23;
+            this.textBoxSpecialtyCameraInput.TabIndex = 8;
+            this.textBoxSpecialtyCameraInput.TextChanged += new System.EventHandler(this.textBoxSpecialtyCameraInput_TextChanged);
             // 
             // textBoxParticipantNameInput
             // 
@@ -309,7 +327,8 @@ namespace DialogueTool
             this.textBoxParticipantNameInput.Name = "textBoxParticipantNameInput";
             this.textBoxParticipantNameInput.ReadOnly = true;
             this.textBoxParticipantNameInput.Size = new System.Drawing.Size(197, 23);
-            this.textBoxParticipantNameInput.TabIndex = 24;
+            this.textBoxParticipantNameInput.TabIndex = 4;
+            this.textBoxParticipantNameInput.TextChanged += new System.EventHandler(this.textBoxParticipantNameInput_TextChanged);
             // 
             // textBoxEmoteTypeInput
             // 
@@ -318,7 +337,8 @@ namespace DialogueTool
             this.textBoxEmoteTypeInput.Name = "textBoxEmoteTypeInput";
             this.textBoxEmoteTypeInput.ReadOnly = true;
             this.textBoxEmoteTypeInput.Size = new System.Drawing.Size(196, 23);
-            this.textBoxEmoteTypeInput.TabIndex = 25;
+            this.textBoxEmoteTypeInput.TabIndex = 5;
+            this.textBoxEmoteTypeInput.TextChanged += new System.EventHandler(this.textBoxEmoteTypeInput_TextChanged);
             // 
             // textBoxLineInput
             // 
@@ -328,7 +348,8 @@ namespace DialogueTool
             this.textBoxLineInput.Name = "textBoxLineInput";
             this.textBoxLineInput.ReadOnly = true;
             this.textBoxLineInput.Size = new System.Drawing.Size(439, 134);
-            this.textBoxLineInput.TabIndex = 26;
+            this.textBoxLineInput.TabIndex = 9;
+            this.textBoxLineInput.TextChanged += new System.EventHandler(this.textBoxLineInput_TextChanged);
             // 
             // textBoxConversationSummaryInput
             // 
@@ -338,7 +359,8 @@ namespace DialogueTool
             this.textBoxConversationSummaryInput.Name = "textBoxConversationSummaryInput";
             this.textBoxConversationSummaryInput.ReadOnly = true;
             this.textBoxConversationSummaryInput.Size = new System.Drawing.Size(439, 152);
-            this.textBoxConversationSummaryInput.TabIndex = 27;
+            this.textBoxConversationSummaryInput.TabIndex = 10;
+            this.textBoxConversationSummaryInput.TextChanged += new System.EventHandler(this.textBoxConversationSummaryInput_TextChanged);
             // 
             // buttonSaveAs
             // 
@@ -346,6 +368,7 @@ namespace DialogueTool
             this.buttonSaveAs.Name = "buttonSaveAs";
             this.buttonSaveAs.Size = new System.Drawing.Size(75, 23);
             this.buttonSaveAs.TabIndex = 28;
+            this.buttonSaveAs.TabStop = false;
             this.buttonSaveAs.Text = "Save As";
             this.buttonSaveAs.UseVisualStyleBackColor = true;
             this.buttonSaveAs.Click += new System.EventHandler(this.buttonSaveAs_Click);
@@ -356,6 +379,7 @@ namespace DialogueTool
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 29;
+            this.buttonSave.TabStop = false;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
@@ -366,6 +390,7 @@ namespace DialogueTool
             this.buttonOpenViewer.Name = "buttonOpenViewer";
             this.buttonOpenViewer.Size = new System.Drawing.Size(218, 23);
             this.buttonOpenViewer.TabIndex = 30;
+            this.buttonOpenViewer.TabStop = false;
             this.buttonOpenViewer.Text = "Open In Viewer";
             this.buttonOpenViewer.UseVisualStyleBackColor = true;
             this.buttonOpenViewer.Click += new System.EventHandler(this.buttonOpenViewer_Click);
@@ -420,10 +445,10 @@ namespace DialogueTool
         private FormMain parentForm;
         private string fileDir;
         private DialogueTree dialogue;
-        private System.Windows.Forms.TreeView Tree;
-        private System.Windows.Forms.ContextMenuStrip contextMenu;
-        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
+        private TreeView Tree;
+        private ContextMenuStrip contextMenu;
+        private ToolStripMenuItem addToolStripMenuItem;
+        private ToolStripMenuItem removeToolStripMenuItem;
         private ToolTip toolTip;
         private Button buttonAddNode;
         private Button buttonAddRoot;

@@ -7,6 +7,11 @@ namespace DialogueTool
     internal class DialogueTree
     {
         public List<DialogueRoot> DialogueRoot = new List<DialogueRoot>();
+        /// <summary>
+        /// Serializes a DialogueTree object into a json file at a specified location
+        /// </summary>
+        /// <param name="destination">Place the file is being saved</param>
+        /// <param name="fileName">Name of the file</param>
 
         //Prototype: void Save(string destination, string fileName)
         //Arguments: Two strings. One for the save location and one for the file name
@@ -23,6 +28,12 @@ namespace DialogueTool
                 newName += ".json";
             File.WriteAllText(destination + newName, json);
         }
+
+        /// <summary>
+        /// Deserializes a DialogueTree object from a json file located at the
+        /// specified location into another DialogueTree object
+        /// </summary>
+        /// <param name="directory">Directory for the file being loaded</param>
 
         //Prototype: void Load(string directory)
         //Arguments: Takes in a string

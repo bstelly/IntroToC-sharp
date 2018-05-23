@@ -13,6 +13,7 @@ namespace DialogueTool
         /// </summary>
         /// <param name="parent">The Form that opens this form</param>
         /// <param name="directory">The string containing the file location</param>
+
         //Prototype: FormViewer(Form parent, string directory)
         //Arguments: takes in a Form and a string
         //Description: Creates an instance of the FormViewer class and creates rows for
@@ -22,7 +23,7 @@ namespace DialogueTool
         //Protection Level: public
         public FormViewer(Form parent, string directory)
         {
-            this.Click += Refresh_Click;
+            Click += Refresh_Click;
             parentForm = parent;
             fileDir = directory;
             InitializeComponent();

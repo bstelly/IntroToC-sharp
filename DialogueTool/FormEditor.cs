@@ -72,7 +72,7 @@ namespace DialogueTool
             ToggleRootTextboxes();
             ToggleNodeTextboxes();
             //Conversation ID and Participants should be assigned on Root click
-            //Other properties shoudl be assigned on Node click
+            //Other properties should be assigned on Node click
         }
 
         //Prototype:
@@ -101,38 +101,7 @@ namespace DialogueTool
 
         private void removeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-                var result = DialogResult.OK;
-                if (Tree.SelectedNode != Tree.Nodes[0])
-                {
-                    if (Tree.Nodes[0].Nodes.Contains(Tree.SelectedNode))
-                    {
-                        if (checkBoxRootWarn.Checked)
-                            result = MessageBox.Show("Are you sure you want to delete this node?",
-                                "Delete Node", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                        if (result == DialogResult.OK)
-                        {
-                            Tree.SelectedNode.Remove();
-                            dialogue.DialogueRoot.Remove(dialogue.DialogueRoot[Tree.SelectedNode.Index]);
-                            return;
-                        }
-                    }
-
-                    for (var i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
-                    for (var j = 0; j < Tree.Nodes[0].Nodes[i].Nodes.Count; j++)
-                        if (Tree.Nodes[0].Nodes[i].Nodes[j].IsSelected)
-                        {
-                            if (checkBoxNodeWarn.Checked)
-                                result = MessageBox.Show("Are you sure you want to delete this node?",
-                                    "Delete Node", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                            if (result == DialogResult.OK)
-                            {
-                                Tree.SelectedNode.Remove();
-                                dialogue.DialogueRoot[i].DialogueNode.Remove(
-                                    dialogue.DialogueRoot[i].DialogueNode[j]);
-                                return;
-                            }
-                        }
-                }
+                RemoveFromTree();
         }
 
         //Prototype:
@@ -172,7 +141,6 @@ namespace DialogueTool
         {
             Tree.Nodes[0].Nodes.Add(new TreeNode("New Root"));
             dialogue.DialogueRoot.Add(new DialogueRoot());
-
         }
 
         //Prototype:
@@ -183,38 +151,7 @@ namespace DialogueTool
         //Protection Level:
         private void buttonRemove_Click(object sender, EventArgs e)
         {
-            var result = DialogResult.OK;
-            if (Tree.SelectedNode != Tree.Nodes[0])
-            {
-                if (Tree.Nodes[0].Nodes.Contains(Tree.SelectedNode))
-                {
-                    if (checkBoxRootWarn.Checked)
-                        result = MessageBox.Show("Are you sure you want to delete this Root?",
-                            "Delete Root", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                    if (result == DialogResult.OK)
-                    {
-                        dialogue.DialogueRoot.Remove(dialogue.DialogueRoot[Tree.SelectedNode.Index]);
-                        Tree.SelectedNode.Remove();
-                        return;
-                    }
-                }
-
-                for (var i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
-                for (var j = 0; j < Tree.Nodes[0].Nodes[i].Nodes.Count; j++)
-                    if (Tree.Nodes[0].Nodes[i].Nodes[j].IsSelected)
-                    {
-                        if (checkBoxNodeWarn.Checked)
-                            result = MessageBox.Show("Are you sure you want to delete this Node?",
-                                "Delete Node", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                        if (result == DialogResult.OK)
-                        {
-                            Tree.SelectedNode.Remove();
-                            dialogue.DialogueRoot[i].DialogueNode.Remove(
-                                dialogue.DialogueRoot[i].DialogueNode[j]);
-                            return;
-                        }
-                    }
-            }
+            RemoveFromTree();
         }
 
         private void buttonOpenViewer_Click(object sender, EventArgs e)
@@ -249,6 +186,42 @@ namespace DialogueTool
                     textBoxConvIdInput.ReadOnly = true;
                     textBoxParticipantNumInput.BackColor = SystemColors.Control;
                     textBoxParticipantNumInput.ReadOnly = true;
+            }
+        }
+
+        private void RemoveFromTree()
+        {
+            var result = DialogResult.OK;
+            if (Tree.SelectedNode != Tree.Nodes[0])
+            {
+                if (Tree.Nodes[0].Nodes.Contains(Tree.SelectedNode))
+                {
+                    if (checkBoxRootWarn.Checked)
+                        result = MessageBox.Show("Are you sure you want to delete this Root?",
+                            "Delete Root", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                    if (result == DialogResult.OK)
+                    {
+                        dialogue.DialogueRoot.Remove(dialogue.DialogueRoot[Tree.SelectedNode.Index]);
+                        Tree.SelectedNode.Remove();
+                        return;
+                    }
+                }
+
+                for (var i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
+                for (var j = 0; j < Tree.Nodes[0].Nodes[i].Nodes.Count; j++)
+                    if (Tree.Nodes[0].Nodes[i].Nodes[j].IsSelected)
+                    {
+                        if (checkBoxNodeWarn.Checked)
+                            result = MessageBox.Show("Are you sure you want to delete this Node?",
+                                "Delete Node", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                        if (result == DialogResult.OK)
+                        {
+                            Tree.SelectedNode.Remove();
+                            dialogue.DialogueRoot[i].DialogueNode.Remove(
+                                dialogue.DialogueRoot[i].DialogueNode[j]);
+                            return;
+                        }
+                    }
             }
         }
 
@@ -294,5 +267,64 @@ namespace DialogueTool
             }
         }
 
+        private void textBoxConvIdInput_TextChanged(object sender, EventArgs e)
+        {
+            Tree.Nodes[0].Nodes[GetSelectedRoot()].Text = textBoxConvIdInput.Text;
+            //foreach (var node in dialogue.DialogueRoot[GetSelectedRoot()].DialogueNode)
+            //{                                                                                             //cant put this here nodes created after naming the root
+            //    node.ConversationID = Tree.Nodes[0].Nodes[GetSelectedRoot()].Text;                        //will not get named until text changes
+            //}
+        }
+
+        private void textBoxParticipantNumInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxParticipantNameInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxEmoteTypeInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxSideInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxSpecialityAnimationInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxSpecialtyCameraInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxLineInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxConversationSummaryInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private int GetSelectedRoot()
+        {
+            for (var i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
+                if (Tree.Nodes[0].Nodes[i].IsSelected)
+                {
+                    return i;
+                }
+
+            return 0;
+        }
     }
 }

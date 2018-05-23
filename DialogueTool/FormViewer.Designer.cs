@@ -274,29 +274,29 @@ namespace DialogueTool
 
         #endregion
 
-        private System.Windows.Forms.DataGridView grid;
+        private DataGridView grid;
         private Form parentForm;
         private string fileDir;
         private DialogueTree dialogue;
-        private System.Windows.Forms.TextBox display;
+        private TextBox display;
         private int dialogueLines;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ConversationID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ParticipantName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EmoteType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Side;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Line;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SpecialityAnimation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SpecialtyCamera;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Participants;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ConversationSummary;
-        private System.Windows.Forms.Button buttonNextLine;
-        private System.Windows.Forms.Button buttonPrevConv;
-        private System.Windows.Forms.Button buttonNextConv;
-        private System.Windows.Forms.Button buttonPrevLine;
-        private System.Windows.Forms.Button buttonFontSizeUp;
-        private System.Windows.Forms.Button buttonFontSizeDown;
-        private System.Windows.Forms.Button buttonClose;
-        private System.Windows.Forms.TextBox textBoxFontSize;
-        private System.Windows.Forms.ToolTip toolTip1;
+        private DataGridViewTextBoxColumn ConversationID;
+        private DataGridViewTextBoxColumn ParticipantName;
+        private DataGridViewTextBoxColumn EmoteType;
+        private DataGridViewTextBoxColumn Side;
+        private DataGridViewTextBoxColumn Line;
+        private DataGridViewTextBoxColumn SpecialityAnimation;
+        private DataGridViewTextBoxColumn SpecialtyCamera;
+        private DataGridViewTextBoxColumn Participants;
+        private DataGridViewTextBoxColumn ConversationSummary;
+        private Button buttonNextLine;
+        private Button buttonPrevConv;
+        private Button buttonNextConv;
+        private Button buttonPrevLine;
+        private Button buttonFontSizeUp;
+        private Button buttonFontSizeDown;
+        private Button buttonClose;
+        private TextBox textBoxFontSize;
+        private ToolTip toolTip1;
     }
 }
