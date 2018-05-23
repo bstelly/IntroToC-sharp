@@ -22,7 +22,7 @@ namespace DialogueTool
         //Protection Level: public
         public FormViewer(Form parent, string directory)
         {
-            this.Click += buttonRefresh_Click;
+            this.Click += Refresh_Click;
             parentForm = parent;
             fileDir = directory;
             InitializeComponent();
@@ -324,7 +324,7 @@ namespace DialogueTool
         //Postcondition: The dataGridView is cleared and re-populated, showing changes made
         //               to the json file, if any
         //Protection Level: private
-        private void buttonRefresh_Click(object sender, EventArgs e)
+        private void Refresh_Click(object sender, EventArgs e)
         {
             dialogue = JsonConvert.DeserializeObject<DialogueTree>(File.ReadAllText(
                 fileDir));
