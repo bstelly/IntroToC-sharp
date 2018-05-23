@@ -53,7 +53,6 @@ namespace DialogueTool
             this.buttonClose = new System.Windows.Forms.Button();
             this.textBoxFontSize = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.buttonRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -246,17 +245,6 @@ namespace DialogueTool
             this.textBoxFontSize.TabIndex = 10;
             this.textBoxFontSize.Text = "Font Size";
             // 
-            // buttonRefresh
-            // 
-            this.buttonRefresh.Location = new System.Drawing.Point(12, 640);
-            this.buttonRefresh.Name = "buttonRefresh";
-            this.buttonRefresh.Size = new System.Drawing.Size(83, 30);
-            this.buttonRefresh.TabIndex = 6;
-            this.buttonRefresh.Text = "Refresh";
-            this.toolTip1.SetToolTip(this.buttonRefresh, "Reloads the .json file into the Viewer");
-            this.buttonRefresh.UseVisualStyleBackColor = true;
-            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
-            // 
             // FormViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -268,7 +256,6 @@ namespace DialogueTool
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.buttonFontSizeDown);
             this.Controls.Add(this.buttonFontSizeUp);
-            this.Controls.Add(this.buttonRefresh);
             this.Controls.Add(this.buttonPrevLine);
             this.Controls.Add(this.buttonNextConv);
             this.Controls.Add(this.buttonPrevConv);
@@ -311,6 +298,5 @@ namespace DialogueTool
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.TextBox textBoxFontSize;
         private System.Windows.Forms.ToolTip toolTip1;
-        private Button buttonRefresh;
     }
 }
