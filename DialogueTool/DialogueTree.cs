@@ -13,20 +13,16 @@ namespace DialogueTool
         /// <param name="destination">Place the file is being saved</param>
         /// <param name="fileName">Name of the file</param>
 
-        //Prototype: void Save(string destination, string fileName)
-        //Arguments: Two strings. One for the save location and one for the file name
+        //Prototype: void Save(string directory)
+        //Arguments: A string for the files directory
         //Description: Serializes a DialogueTree object into a json file at a specified location
         //Precondition: There must be a DialogueTree object
         //Postcondition: A DialogueTree object is serialized and saved to a location
         //Protection Level: public
-        public void Save(string destination, string fileName)
+        public void Save(string directory)
         {
             var json = JsonConvert.SerializeObject(this, Formatting.Indented);
-            var newName = @"\" + fileName;
-            if (!newName.Contains(".json") || !newName.Contains(".Json") ||
-                !newName.Contains(".JSON"))
-                newName += ".json";
-            File.WriteAllText(destination + newName, json);
+            File.WriteAllText(directory, json);
         }
 
         /// <summary>

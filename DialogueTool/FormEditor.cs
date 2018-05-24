@@ -19,11 +19,8 @@ namespace DialogueTool
         {
             InitializeComponent();
             fileDir = directory;
-            if (directory == "")
-            {
-                dialogue = new DialogueTree();
-            }
-            else
+            dialogue = new DialogueTree();
+            if (directory != "")
             {
                 dialogue.Load(fileDir);
             }
@@ -71,6 +68,7 @@ namespace DialogueTool
             Tree.SelectedNode = e.Node;
             ToggleRootTextboxes();
             ToggleNodeTextboxes();
+            GetDisplayText();
             //Conversation ID and Participants should be assigned on Root click
             //Other properties should be assigned on Node click
         }
@@ -94,6 +92,10 @@ namespace DialogueTool
                 if (Tree.Nodes[0].Nodes[i].IsSelected)
                 {
                     dialogue.DialogueRoot[i].DialogueNode.Add(new DialogueNode());
+                    dialogue.DialogueRoot[i].DialogueNode[dialogue.DialogueRoot[i].DialogueNode.Count - 1]
+                        .ConversationID = textBoxConvIdInput.Text;
+                    dialogue.DialogueRoot[i].DialogueNode[dialogue.DialogueRoot[i].DialogueNode.Count - 1]
+                        .Participants = textBoxParticipantNumInput.Text;
                     Tree.Nodes[0].Nodes[i].Nodes.Add(new TreeNode((Tree.Nodes[0].Nodes[i].Nodes.Count + 1).ToString()));
                     Tree.Nodes[0].Nodes[i].Expand();
                 }
@@ -127,8 +129,12 @@ namespace DialogueTool
                     Tree.Nodes[0].Nodes[i].Nodes
                         .Add(new TreeNode((Tree.Nodes[0].Nodes[i].Nodes.Count + 1).ToString()));
                     dialogue.DialogueRoot[i].DialogueNode.Add(new DialogueNode());
+                    dialogue.DialogueRoot[i].DialogueNode[dialogue.DialogueRoot[i].DialogueNode.Count - 1]
+                        .ConversationID = textBoxConvIdInput.Text;
+                    dialogue.DialogueRoot[i].DialogueNode[dialogue.DialogueRoot[i].DialogueNode.Count - 1]
+                        .Participants = textBoxParticipantNumInput.Text;
 
-                }
+                    }
         }
 
         //Prototype:
@@ -154,22 +160,61 @@ namespace DialogueTool
             RemoveFromTree();
         }
 
+        //Prototype:
+        //Arguments:
+        //Description:
+        //Precondition:
+        //Postcondition:
+        //Protection Level:
         private void buttonOpenViewer_Click(object sender, EventArgs e)
         {
-
+            if (fileDir != "")
+            {
+                viewerForm = new FormViewer(this, fileDir);
+                viewerForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Can not open a new file in the viewer until it is saved.", 
+                    "Unsaved File", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+            }
         }
 
+        //Prototype:
+        //Arguments:
+        //Description:
+        //Precondition:
+        //Postcondition:
+        //Protection Level:
         private void buttonSaveAs_Click(object sender, EventArgs e)
         {
-
+            SetConversationId();
+            saveFileDialog.ShowDialog();
+            fileDir = saveFileDialog.FileName;
+            dialogue.Save(fileDir);
         }
 
+        //Prototype:
+        //Arguments:
+        //Description:
+        //Precondition:
+        //Postcondition:
+        //Protection Level:
         private void buttonSave_Click(object sender, EventArgs e)
         {
-
+            SetConversationId();
+            saveFileDialog.ShowDialog();
+            fileDir = saveFileDialog.FileName;
+            dialogue.Save(fileDir);
         }
 
 
+        //Prototype:
+        //Arguments:
+        //Description:
+        //Precondition:
+        //Postcondition:
+        //Protection Level:
         private void ToggleRootTextboxes()
         {
             for (var i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
@@ -189,6 +234,12 @@ namespace DialogueTool
             }
         }
 
+        //Prototype:
+        //Arguments:
+        //Description:
+        //Precondition:
+        //Postcondition:
+        //Protection Level:
         private void RemoveFromTree()
         {
             var result = DialogResult.OK;
@@ -225,6 +276,12 @@ namespace DialogueTool
             }
         }
 
+        //Prototype:
+        //Arguments:
+        //Description:
+        //Precondition:
+        //Postcondition:
+        //Protection Level:
         private void ToggleNodeTextboxes()
         {
             for (var i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
@@ -267,55 +324,198 @@ namespace DialogueTool
             }
         }
 
+        //Prototype:
+        //Arguments:
+        //Description:
+        //Precondition:
+        //Postcondition:
+        //Protection Level:
         private void textBoxConvIdInput_TextChanged(object sender, EventArgs e)
         {
             Tree.Nodes[0].Nodes[GetSelectedRoot()].Text = textBoxConvIdInput.Text;
-            //foreach (var node in dialogue.DialogueRoot[GetSelectedRoot()].DialogueNode)
-            //{                                                                                             //cant put this here nodes created after naming the root
-            //    node.ConversationID = Tree.Nodes[0].Nodes[GetSelectedRoot()].Text;                        //will not get named until text changes
-            //}
+            foreach (var node in dialogue.DialogueRoot[GetSelectedRoot()].DialogueNode)
+            {
+                node.ConversationID = Tree.Nodes[0].Nodes[GetSelectedRoot()].Text;
+            }
         }
 
+        //Prototype:
+        //Arguments:
+        //Description:
+        //Precondition:
+        //Postcondition:
+        //Protection Level:
         private void textBoxParticipantNumInput_TextChanged(object sender, EventArgs e)
         {
+            string[] numbers = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                if (textBoxParticipantNumInput.Text.Contains(numbers[i]))
+                {
+                    while (Tree.SelectedNode.Nodes.Count < Convert.ToInt32(textBoxParticipantNumInput.Text))
+                    {
+                        dialogue.DialogueRoot[Tree.SelectedNode.Index].DialogueNode.Add(new DialogueNode());
+                        Tree.Nodes[0].Nodes[Tree.SelectedNode.Index].Nodes
+                            .Add(new TreeNode((Tree.Nodes[0].Nodes[Tree.SelectedNode.Index].Nodes.Count + 1)
+                                .ToString()));
+                    }
 
+                    foreach (var node in dialogue.DialogueRoot[GetSelectedRoot()].DialogueNode)
+                    {
+                        node.Participants = textBoxParticipantNumInput.Text;
+                    }
+                }
+            }
         }
 
+        //Prototype:
+        //Arguments:
+        //Description:
+        //Precondition:
+        //Postcondition:
+        //Protection Level:
         private void textBoxParticipantNameInput_TextChanged(object sender, EventArgs e)
         {
-
+            for (var i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
+            {
+                for (var j = 0; j < Tree.Nodes[0].Nodes[i].Nodes.Count; j++)
+                {
+                    if (Tree.Nodes[0].Nodes[i].Nodes[j].IsSelected)
+                    {
+                        dialogue.DialogueRoot[i].DialogueNode[j].ParticipantName = textBoxParticipantNameInput.Text;
+                    }
+                }
+            }
         }
 
+        //Prototype:
+        //Arguments:
+        //Description:
+        //Precondition:
+        //Postcondition:
+        //Protection Level:
         private void textBoxEmoteTypeInput_TextChanged(object sender, EventArgs e)
         {
-
+            for (var i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
+            {
+                for (var j = 0; j < Tree.Nodes[0].Nodes[i].Nodes.Count; j++)
+                {
+                    if (Tree.Nodes[0].Nodes[i].Nodes[j].IsSelected)
+                    {
+                        dialogue.DialogueRoot[i].DialogueNode[j].EmoteType = textBoxEmoteTypeInput.Text;
+                    }
+                }
+            }
         }
 
+        //Prototype:
+        //Arguments:
+        //Description:
+        //Precondition:
+        //Postcondition:
+        //Protection Level:
         private void textBoxSideInput_TextChanged(object sender, EventArgs e)
         {
-
+            for (var i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
+            {
+                for (var j = 0; j < Tree.Nodes[0].Nodes[i].Nodes.Count; j++)
+                {
+                    if (Tree.Nodes[0].Nodes[i].Nodes[j].IsSelected)
+                    {
+                        dialogue.DialogueRoot[i].DialogueNode[j].Side = textBoxSideInput.Text;
+                    }
+                }
+            }
         }
 
+        //Prototype:
+        //Arguments:
+        //Description:
+        //Precondition:
+        //Postcondition:
+        //Protection Level:
         private void textBoxSpecialityAnimationInput_TextChanged(object sender, EventArgs e)
         {
-
+            for (var i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
+            {
+                for (var j = 0; j < Tree.Nodes[0].Nodes[i].Nodes.Count; j++)
+                {
+                    if (Tree.Nodes[0].Nodes[i].Nodes[j].IsSelected)
+                    {
+                        dialogue.DialogueRoot[i].DialogueNode[j].SpecialityAnimation =
+                            textBoxSpecialityAnimationInput.Text;
+                    }
+                }
+            }
         }
 
+        //Prototype:
+        //Arguments:
+        //Description:
+        //Precondition:
+        //Postcondition:
+        //Protection Level:v
         private void textBoxSpecialtyCameraInput_TextChanged(object sender, EventArgs e)
         {
-
+            for (var i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
+            {
+                for (var j = 0; j < Tree.Nodes[0].Nodes[i].Nodes.Count; j++)
+                {
+                    if (Tree.Nodes[0].Nodes[i].Nodes[j].IsSelected)
+                    {
+                        dialogue.DialogueRoot[i].DialogueNode[j].SpecialtyCamera = textBoxSpecialtyCameraInput.Text;
+                    }
+                }
+            }
         }
 
+        //Prototype:
+        //Arguments:
+        //Description:
+        //Precondition:
+        //Postcondition:
+        //Protection Level:
         private void textBoxLineInput_TextChanged(object sender, EventArgs e)
         {
-
+            for (var i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
+            {
+                for (var j = 0; j < Tree.Nodes[0].Nodes[i].Nodes.Count; j++)
+                {
+                    if (Tree.Nodes[0].Nodes[i].Nodes[j].IsSelected)
+                    {
+                        dialogue.DialogueRoot[i].DialogueNode[j].Line = textBoxLineInput.Text;
+                    }
+                }
+            }
         }
 
+        //Prototype:
+        //Arguments:
+        //Description:
+        //Precondition:
+        //Postcondition:
+        //Protection Level:
         private void textBoxConversationSummaryInput_TextChanged(object sender, EventArgs e)
         {
-
+            for (var i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
+            {
+                for (var j = 0; j < Tree.Nodes[0].Nodes[i].Nodes.Count; j++)
+                {
+                    if (Tree.Nodes[0].Nodes[i].Nodes[j].IsSelected)
+                    {
+                        dialogue.DialogueRoot[i].DialogueNode[j].ConversationSummary =
+                            textBoxConversationSummaryInput.Text;
+                    }
+                }
+            }
         }
 
+        //Prototype:
+        //Arguments:
+        //Description:
+        //Precondition:
+        //Postcondition:
+        //Protection Level:
         private int GetSelectedRoot()
         {
             for (var i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
@@ -325,6 +525,62 @@ namespace DialogueTool
                 }
 
             return 0;
+        }
+
+
+        //Prototype:
+        //Arguments:
+        //Description:
+        //Precondition:
+        //Postcondition:
+        //Protection Level:
+        private void SetConversationId()
+        {
+            for (int i = 0; i < dialogue.DialogueRoot.Count; i++)
+            {
+                for (int j = 0; j < dialogue.DialogueRoot[i].DialogueNode.Count; j++)
+                {
+                    dialogue.DialogueRoot[i].DialogueNode[j].ConversationID = Tree.Nodes[0].Nodes[i].Text;
+                }
+            }
+        }
+
+        //Prototype:
+        //Arguments:
+        //Description:
+        //Precondition:
+        //Postcondition:
+        //Protection Level:
+        private void GetDisplayText()
+        {
+            for (var i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
+                if (Tree.Nodes[0].Nodes[i].IsSelected)
+                {
+                    textBoxConvIdInput.Text = Tree.SelectedNode.Text;
+                    if (dialogue.DialogueRoot[i].DialogueNode.Count != 0)
+                    {
+                        textBoxParticipantNumInput.Text = dialogue.DialogueRoot[i].DialogueNode[0].Participants;
+                    }
+                }
+
+            for (var i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
+            {
+                for (var j = 0; j < Tree.Nodes[0].Nodes[i].Nodes.Count; j++)
+                {
+                    if (Tree.Nodes[0].Nodes[i].Nodes[j].IsSelected)
+                    {
+                        textBoxParticipantNameInput.Text = dialogue.DialogueRoot[i].DialogueNode[j].ParticipantName;
+                        textBoxEmoteTypeInput.Text = dialogue.DialogueRoot[i].DialogueNode[j].EmoteType;
+                        textBoxLineInput.Text = dialogue.DialogueRoot[i].DialogueNode[j].Line;
+                        textBoxSpecialtyCameraInput.Text = dialogue.DialogueRoot[i].DialogueNode[j].SpecialtyCamera;
+                        textBoxSpecialityAnimationInput.Text =
+                            dialogue.DialogueRoot[i].DialogueNode[j].SpecialityAnimation;
+                        textBoxSideInput.Text = dialogue.DialogueRoot[i].DialogueNode[j].Side;
+                        textBoxConversationSummaryInput.Text =
+                            dialogue.DialogueRoot[i].DialogueNode[j].ConversationSummary;
+                    }
+                }
+            }
         }
     }
 }
