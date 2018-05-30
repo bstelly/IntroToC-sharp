@@ -96,6 +96,8 @@ namespace DialogueTool
                         .ConversationID = textBoxConvIdInput.Text;
                     dialogue.DialogueRoot[i].DialogueNode[dialogue.DialogueRoot[i].DialogueNode.Count - 1]
                         .Participants = textBoxParticipantNumInput.Text;
+                    dialogue.DialogueRoot[i].DialogueNode[dialogue.DialogueRoot[i].DialogueNode.Count - 1]
+                        .ConversationSummary = textBoxConversationSummaryInput.Text;
                     Tree.Nodes[0].Nodes[i].Nodes.Add(new TreeNode((Tree.Nodes[0].Nodes[i].Nodes.Count + 1).ToString()));
                     Tree.Nodes[0].Nodes[i].Expand();
                 }
@@ -133,7 +135,8 @@ namespace DialogueTool
                         .ConversationID = textBoxConvIdInput.Text;
                     dialogue.DialogueRoot[i].DialogueNode[dialogue.DialogueRoot[i].DialogueNode.Count - 1]
                         .Participants = textBoxParticipantNumInput.Text;
-
+                    dialogue.DialogueRoot[i].DialogueNode[dialogue.DialogueRoot[i].DialogueNode.Count - 1]
+                        .ConversationSummary = textBoxConversationSummaryInput.Text;
                     }
         }
 
@@ -147,6 +150,7 @@ namespace DialogueTool
         {
             Tree.Nodes[0].Nodes.Add(new TreeNode("New Root"));
             dialogue.DialogueRoot.Add(new DialogueRoot());
+            Tree.Nodes[0].Expand();
         }
 
         //Prototype:
@@ -175,23 +179,9 @@ namespace DialogueTool
             }
             else
             {
-                MessageBox.Show("Can not open a new file in the viewer until it is saved.", 
+                MessageBox.Show("Can not open a new file in the viewer until it is saved.",
                     "Unsaved File", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
             }
-        }
-
-        //Prototype:
-        //Arguments:
-        //Description:
-        //Precondition:
-        //Postcondition:
-        //Protection Level:
-        private void buttonSaveAs_Click(object sender, EventArgs e)
-        {
-            SetConversationId();
-            saveFileDialog.ShowDialog();
-            fileDir = saveFileDialog.FileName;
-            dialogue.Save(fileDir);
         }
 
         //Prototype:
@@ -225,12 +215,16 @@ namespace DialogueTool
                     textBoxConvIdInput.ReadOnly = false;
                     textBoxParticipantNumInput.BackColor = Color.White;
                     textBoxParticipantNumInput.ReadOnly = false;
+                    textBoxConversationSummaryInput.BackColor = Color.White;
+                    textBoxConversationSummaryInput.ReadOnly = false;
                     return;
                 }
                     textBoxConvIdInput.BackColor = SystemColors.Control;
                     textBoxConvIdInput.ReadOnly = true;
                     textBoxParticipantNumInput.BackColor = SystemColors.Control;
                     textBoxParticipantNumInput.ReadOnly = true;
+                    textBoxConversationSummaryInput.BackColor = SystemColors.Control;
+                    textBoxConversationSummaryInput.ReadOnly = true;
             }
         }
 
@@ -302,8 +296,6 @@ namespace DialogueTool
                         textBoxEmoteTypeInput.ReadOnly = false;
                         textBoxLineInput.BackColor = Color.White;
                         textBoxLineInput.ReadOnly = false;
-                        textBoxConversationSummaryInput.BackColor = Color.White;
-                        textBoxConversationSummaryInput.ReadOnly = false;
                         return;
                     }
                         textBoxSpecialityAnimationInput.BackColor = SystemColors.Control;
@@ -318,8 +310,6 @@ namespace DialogueTool
                         textBoxEmoteTypeInput.ReadOnly = true;
                         textBoxLineInput.BackColor = SystemColors.Control;
                         textBoxLineInput.ReadOnly = true;
-                        textBoxConversationSummaryInput.BackColor = SystemColors.Control;
-                        textBoxConversationSummaryInput.ReadOnly = true;
                 }
             }
         }
@@ -497,16 +487,9 @@ namespace DialogueTool
         //Protection Level:
         private void textBoxConversationSummaryInput_TextChanged(object sender, EventArgs e)
         {
-            for (var i = 0; i < Tree.Nodes[0].Nodes.Count; i++)
+            foreach (var node in dialogue.DialogueRoot[GetSelectedRoot()].DialogueNode)
             {
-                for (var j = 0; j < Tree.Nodes[0].Nodes[i].Nodes.Count; j++)
-                {
-                    if (Tree.Nodes[0].Nodes[i].Nodes[j].IsSelected)
-                    {
-                        dialogue.DialogueRoot[i].DialogueNode[j].ConversationSummary =
-                            textBoxConversationSummaryInput.Text;
-                    }
-                }
+                node.ConversationSummary = textBoxConversationSummaryInput.Text;
             }
         }
 
@@ -560,6 +543,7 @@ namespace DialogueTool
                     if (dialogue.DialogueRoot[i].DialogueNode.Count != 0)
                     {
                         textBoxParticipantNumInput.Text = dialogue.DialogueRoot[i].DialogueNode[0].Participants;
+                        textBoxConversationSummaryInput.Text = dialogue.DialogueRoot[i].DialogueNode[0].ConversationSummary;
                     }
                 }
 
@@ -576,8 +560,6 @@ namespace DialogueTool
                         textBoxSpecialityAnimationInput.Text =
                             dialogue.DialogueRoot[i].DialogueNode[j].SpecialityAnimation;
                         textBoxSideInput.Text = dialogue.DialogueRoot[i].DialogueNode[j].Side;
-                        textBoxConversationSummaryInput.Text =
-                            dialogue.DialogueRoot[i].DialogueNode[j].ConversationSummary;
                     }
                 }
             }
